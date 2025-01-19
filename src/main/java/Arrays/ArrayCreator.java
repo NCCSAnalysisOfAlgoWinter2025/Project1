@@ -8,7 +8,6 @@ import java.util.Random;
  * It allows for the creation of several derived arrays from the original,
  * including ordered, reversed, 50% ordered, and 75% ordered arrays.
  */
-
 public class ArrayCreator {
 
     private int size = 0;
