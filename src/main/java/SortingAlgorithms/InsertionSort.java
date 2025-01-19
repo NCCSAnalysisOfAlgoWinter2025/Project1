@@ -1,7 +1,7 @@
 package SortingAlgorithms;
 
 /**
- * I implement this algorithm from memory.
+ * I implemented this algorithm from memory.
  */
 
 public class InsertionSort {
