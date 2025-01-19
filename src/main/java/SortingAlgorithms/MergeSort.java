@@ -3,7 +3,8 @@ package SortingAlgorithms;
 /**
  * The code below is from "Coding with John" youtube channel. I made a couple changes such
  * as the variable names in merge from i,j,k to leftPos,rightPos and arrPos so they are
- * more descriptive.
+ * more descriptive. I chose this as it is how I learned this algorithm and found his
+ * implementation less confusing than others I had found.
  */
 
 public class MergeSort {
