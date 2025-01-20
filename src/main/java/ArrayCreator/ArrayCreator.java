@@ -1,4 +1,4 @@
-package Arrays;
+package ArrayCreator;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -9,16 +9,16 @@ import java.util.Random;
  * including ordered, reversed, 50% ordered, and 75% ordered arrays.
  */
 public class ArrayCreator {
-
     private int size = 0;
     private int[] array;
 
     /**
      * Default constructor for creating an array of the size passed by
      * the object created.
+     *
      * @param size
      */
-    public ArrayCreator(int size){
+    public ArrayCreator(int size) {
         this.size = size;
         this.array = new int[size];
         this.array = this.randomArray();
@@ -26,26 +26,33 @@ public class ArrayCreator {
 
     /**
      * Builds a random array of numbers between zero and 40,000.
+     *
      * @return int[]
      */
-    private int[] randomArray(){
+    private int[] randomArray() {
         Random rand = new Random();
 
-        for(int i = 0;i < this.size;i++){
+        for (int i = 0; i < this.size; i++) {
             this.array[i] = rand.nextInt(40000);
         }
         return this.array;
     }
 
-    public int[] array(){
+    /**
+     * Returns array created in randomArray method.
+     *
+     * @return int[]
+     */
+    public int[] array() {
         return this.array;
     }
 
     /**
      * Takes the array created by the randomArray() method and sorts it.
+     *
      * @return int[]
      */
-    public int[] orderedArray(){
+    public int[] orderedArray() {
         // I'm creating a copy so I don't change the order of the original array
         int[] newArray = Arrays.copyOfRange(this.array, 0, this.size);
         Arrays.sort(newArray);
@@ -56,12 +63,12 @@ public class ArrayCreator {
      * Takes the array created by the randomArray() sorts it in reversed order.
      * @return int[]
      */
-    public int[] reversedArray(){
+    public int[] reversedArray() {
         int[] orderedArray = this.orderedArray();
         int[] newArray = Arrays.copyOfRange(orderedArray, 0, this.size);
         int newArraySize = this.size - 1;
 
-        for(int i = 0;i < this.size;i++){
+        for (int i = 0; i < this.size; i++) {
             newArray[newArraySize] = orderedArray[i];
             newArraySize--;
         }
@@ -72,21 +79,19 @@ public class ArrayCreator {
     /**
      * Takes the array created by the randomArray() and sorts the first half
      * and leaves the second half as is.
+     *
      * @return int[]
      */
-    public int[] fiftyPercentOrdered(){
+    public int[] fiftyPercentOrdered() {
         int[] newArray = new int[this.size];
         int[] firstHalf = Arrays.copyOfRange(this.array, 0, this.size / 2);
 
         Arrays.sort(firstHalf);
 
-        for(int i = 0;i < firstHalf.length;i++){
-            newArray[i] = firstHalf[i];
-        }
+        System.arraycopy(firstHalf, 0, newArray, 0, firstHalf.length);
 
-        for(int i = firstHalf.length;i < this.size;i++){
-            newArray[i] = this.array[i];
-        }
+        if (this.size - firstHalf.length >= 0)
+            System.arraycopy(this.array, firstHalf.length, newArray, firstHalf.length, this.size - firstHalf.length);
 
         return newArray;
     }
@@ -94,22 +99,20 @@ public class ArrayCreator {
     /**
      * Takes the array created by the randomArray() and sorts the first 75%
      * and leaves the last 25% as is.
+     *
      * @return int[]
      */
-    public int[] seventyFivePercentOrdered(){
+    public int[] seventyFivePercentOrdered() {
         int[] newArray = new int[this.size];
-        int seventyFivePercent = (int)(this.size * 0.75);
+        int seventyFivePercent = (int) (this.size * 0.75);
         int[] firstHalf = Arrays.copyOfRange(this.array, 0, seventyFivePercent);
 
         Arrays.sort(firstHalf);
 
-        for(int i = 0;i < firstHalf.length;i++){
-            newArray[i] = firstHalf[i];
-        }
+        System.arraycopy(firstHalf, 0, newArray, 0, firstHalf.length);
 
-        for(int i = firstHalf.length;i < this.size;i++){
-            newArray[i] = this.array[i];
-        }
+        if (this.size - firstHalf.length >= 0)
+            System.arraycopy(this.array, firstHalf.length, newArray, firstHalf.length, this.size - firstHalf.length);
 
         return newArray;
     }
