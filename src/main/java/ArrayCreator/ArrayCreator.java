@@ -9,111 +9,110 @@ import java.util.Random;
  * including ordered, reversed, 50% ordered, and 75% ordered arrays.
  */
 public class ArrayCreator {
-    private int size = 0;
-    private int[] array;
+  private int size = 0;
+  private int[] array;
 
-    /**
-     * Default constructor for creating an array of the size passed by
-     * the object created.
-     *
-     * @param size
-     */
-    public ArrayCreator(int size) {
-        this.size = size;
-        this.array = new int[size];
-        this.array = this.randomArray();
+  /**
+   * Default constructor for creating an array of the size passed by
+   * the object created.
+   *
+   * @param size of the array being created.
+   */
+  public ArrayCreator(int size) {
+    this.size = size;
+    this.array = new int[size];
+    this.array = this.randomArray();
+  }
+
+  /**
+   * Builds a random array of numbers between zero and 40,000
+   *
+   * @return An array of random integers of the specified size
+   */
+  private int[] randomArray() {
+    Random rand = new Random();
+
+    for (int i = 0; i < this.size; i++) {
+      this.array[i] = rand.nextInt(40000);
     }
+    return this.array;
+  }
 
-    /**
-     * Builds a random array of numbers between zero and 40,000.
-     *
-     * @return int[]
-     */
-    private int[] randomArray() {
-        Random rand = new Random();
+  /**
+   * Returns array created in randomArray method
+   *
+   * @return Array of random integers
+   */
+  public int[] array() {
+    return this.array;
+  }
 
-        for (int i = 0; i < this.size; i++) {
-            this.array[i] = rand.nextInt(40000);
-        }
-        return this.array;
+  /**
+   * Takes the array created by the randomArray() method and sorts it
+   *
+   * @return a
+   */
+  public int[] orderedArray() {
+    // I'm creating a copy so I don't change the order of the original array
+    int[] newArray = Arrays.copyOfRange(this.array, 0, this.size);
+    Arrays.sort(newArray);
+    return newArray;
+  }
+
+  /**
+   * Reversed array method
+   *
+   * @return asdf
+   */
+  public int[] reversedArray() {
+    int[] orderedArray = this.orderedArray();
+    int[] newArray = Arrays.copyOfRange(orderedArray, 0, this.size);
+    int newArraySize = this.size - 1;
+
+    for (int i = 0; i < this.size; i++) {
+      newArray[newArraySize] = orderedArray[i];
+      newArraySize--;
     }
+    return newArray;
+  }
 
-    /**
-     * Returns array created in randomArray method.
-     *
-     * @return int[]
-     */
-    public int[] array() {
-        return this.array;
-    }
+  /**
+   * Takes the array created by the randomArray() and sorts the first half
+   * and leaves the second half as is.
+   *
+   * @return Array with the first 50% ordered
+   */
+  public int[] fiftyPercentOrdered() {
+    int[] newArray = new int[this.size];
+    int[] firstHalf = Arrays.copyOfRange(this.array, 0, this.size / 2);
 
-    /**
-     * Takes the array created by the randomArray() method and sorts it.
-     *
-     * @return int[]
-     */
-    public int[] orderedArray() {
-        // I'm creating a copy so I don't change the order of the original array
-        int[] newArray = Arrays.copyOfRange(this.array, 0, this.size);
-        Arrays.sort(newArray);
-        return newArray;
-    }
+    Arrays.sort(firstHalf);
+    System.arraycopy(firstHalf, 0, newArray, 0, firstHalf.length);
 
-    /**
-     * Takes the array created by the randomArray() sorts it in reversed order.
-     * @return int[]
-     */
-    public int[] reversedArray() {
-        int[] orderedArray = this.orderedArray();
-        int[] newArray = Arrays.copyOfRange(orderedArray, 0, this.size);
-        int newArraySize = this.size - 1;
+    if (this.size - firstHalf.length >= 0)
+      System.arraycopy(this.array, firstHalf.length, newArray, firstHalf.length, this.size - firstHalf.length);
 
-        for (int i = 0; i < this.size; i++) {
-            newArray[newArraySize] = orderedArray[i];
-            newArraySize--;
-        }
+    return newArray;
+  }
 
-        return newArray;
-    }
+  /**
+   * Takes the array created by the randomArray() and sorts the first 75%
+   * and leaves the last 25% as is.
+   *
+   * @return Array with the first 75% ordered
+   */
+  public int[] seventyFivePercentOrdered() {
+    int[] newArray = new int[this.size];
+    int seventyFivePercent = (int) (this.size * 0.75);
+    int[] firstHalf = Arrays.copyOfRange(this.array, 0, seventyFivePercent);
 
-    /**
-     * Takes the array created by the randomArray() and sorts the first half
-     * and leaves the second half as is.
-     *
-     * @return int[]
-     */
-    public int[] fiftyPercentOrdered() {
-        int[] newArray = new int[this.size];
-        int[] firstHalf = Arrays.copyOfRange(this.array, 0, this.size / 2);
+    Arrays.sort(firstHalf);
 
-        Arrays.sort(firstHalf);
+    System.arraycopy(firstHalf, 0, newArray, 0, firstHalf.length);
 
-        System.arraycopy(firstHalf, 0, newArray, 0, firstHalf.length);
+    if (this.size - firstHalf.length >= 0)
+      System.arraycopy(this.array, firstHalf.length, newArray, firstHalf.length, this.size - firstHalf.length);
 
-        if (this.size - firstHalf.length >= 0)
-            System.arraycopy(this.array, firstHalf.length, newArray, firstHalf.length, this.size - firstHalf.length);
-
-        return newArray;
-    }
-
-    /**
-     * Takes the array created by the randomArray() and sorts the first 75%
-     * and leaves the last 25% as is.
-     *
-     * @return int[]
-     */
-    public int[] seventyFivePercentOrdered() {
-        int[] newArray = new int[this.size];
-        int seventyFivePercent = (int) (this.size * 0.75);
-        int[] firstHalf = Arrays.copyOfRange(this.array, 0, seventyFivePercent);
-
-        Arrays.sort(firstHalf);
-
-        System.arraycopy(firstHalf, 0, newArray, 0, firstHalf.length);
-
-        if (this.size - firstHalf.length >= 0)
-            System.arraycopy(this.array, firstHalf.length, newArray, firstHalf.length, this.size - firstHalf.length);
-
-        return newArray;
-    }
+    return newArray;
+  }
 }
