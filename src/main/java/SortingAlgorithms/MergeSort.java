@@ -1,7 +1,7 @@
 package SortingAlgorithms;
 
 /**
- * The code below is from "Coding with John" youtube channel. I made a couple changes such
+ * The code below is from "Coding with John" YouTube channel. I made a couple changes such
  * as the variable names in merge from i,j,k to leftPos,rightPos and arrPos so they are
  * more descriptive. I chose this as it is how I learned this algorithm and found his
  * implementation less confusing than others I had found.
@@ -10,20 +10,12 @@ package SortingAlgorithms;
 public class MergeSort {
 
   /**
-   * Default constructor.
-   *
-   * @param inputArray the input array of integers to be sorted
-   */
-  public MergeSort(int[] inputArray) {
-  }
-
-  /**
    * Sorts an int array with the MergeSort method. Uses the Merge
    * helper method below for merging arrays.
    *
    * @param inputArray the input array of integers to be sorted
    */
-  public static void mergeSort(int[] inputArray) {
+  public void mergeSort(int[] inputArray) {
     int inputLength = inputArray.length;
 
     if (inputLength < 2) {
