@@ -5,28 +5,30 @@ package SortingAlgorithms;
  */
 
 public class InsertionSort {
+
+  private int[] inputArray;
+
   /**
    * Default constructor.
    *
    * @param inputArray array of integers to be sorted
    */
   public InsertionSort(int[] inputArray) {
+    this.inputArray = inputArray;
   }
 
   /**
    * InsertionSort algorithm
-   *
-   * @param inputArray array of integers to be sorted
    */
-  public static void insertionSort(int[] inputArray) {
-    int len = inputArray.length;
+  public void insertionSort() {
+    int len = this.inputArray.length;
     for (int i = 1; i < len; i++) {
-      int temp = inputArray[i];
+      int temp = this.inputArray[i];
       for (int j = i - 1; j >= 0; j--) {
-        if (inputArray[j] > inputArray[j + 1]) {
-          inputArray[j + 1] = inputArray[j];
-          inputArray[j] = temp;
-          temp = inputArray[j];
+        if (this.inputArray[j] > this.inputArray[j + 1]) {
+          this.inputArray[j + 1] = this.inputArray[j];
+          this.inputArray[j] = temp;
+          temp = this.inputArray[j];
         }
       }
     }
