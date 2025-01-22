@@ -4,7 +4,7 @@ package SortingAlgorithms;
  * I implemented this algorithm from memory.
  */
 
-public class InsertionSort {
+public class InsertionSort{
 
   /**
    * InsertionSort algorithm
