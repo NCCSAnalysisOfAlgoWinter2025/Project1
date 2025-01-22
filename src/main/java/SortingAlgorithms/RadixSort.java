@@ -61,8 +61,8 @@ public class RadixSort {
    */
   private static void radixSortAlgorithm(int[] arr) {
     int max = findArrMax(arr);
-    for (int exp = 1; max / exp > 0; exp *= 10) {
-      countingSort(arr, exp);
+    for (int divisor = 1; max / divisor > 0; divisor *= 10) {
+      countingSort(arr, divisor);
     }
   }
 
