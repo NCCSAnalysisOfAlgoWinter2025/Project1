@@ -8,6 +8,6 @@ public class CountingSort {
    * @param inputArray integer array to be sorted
    */
   public void countingSort(int[] inputArray){
-    System.out.println("test");
+
   }
 }
