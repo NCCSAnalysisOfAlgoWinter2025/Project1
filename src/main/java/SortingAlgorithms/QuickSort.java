@@ -1,7 +1,7 @@
 package SortingAlgorithms;
 
 import java.util.Arrays;
-import java.util.Random;
+// import java.util.Random;
 
 /**
  * A method wrapper containing multiple implementations of the in-place QuickSort algorithm. <br>
@@ -9,14 +9,14 @@ import java.util.Random;
  */
 public class QuickSort {
 
-  private static final Random r = new Random();
+  // private static final Random r = new Random();
   private static final QuickSortPivotPicker firstElementPicker = (a, s, e) -> s;
-  private static final QuickSortPivotPicker randomElementPicker = (a, s, e) -> r.nextInt(s, e);
+  // private static final QuickSortPivotPicker randomElementPicker = (a, s, e) -> r.nextInt(s, e);
 
   private QuickSort() {}
 
   /**
-   * QuickSort pivoting on the first element
+   * QuickSort pivoting on the first element.
    *
    * @param array The array you want to sort
    * @return Returns a sorted copy of the array
@@ -65,7 +65,7 @@ public class QuickSort {
     a[pivotIndex] = a[end];
     a[end] = pivot;
 
-    int temp = 0;
+    int temp;
 
     // in-place sort
     while (leftIndex <= rightIndex) {
