@@ -7,6 +7,8 @@ package SortingAlgorithms;
 public class InsertionSort{
 
   /**
+   * Big O (n^2), Big Omega (n) and Theta (n^2)
+   *
    * InsertionSort algorithm
    *
    * @param inputArray  integer array to be sorted
