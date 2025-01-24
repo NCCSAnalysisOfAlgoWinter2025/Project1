@@ -1,18 +1,17 @@
 package SortingAlgorithms;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.api.Test;
 
 class QuickSortTest {
 
     @Test
-    void quickSortFEP() {
+    void quickSortFERandArray() {
+        // Test on random array
         Random r = new Random();
         ArrayList<Integer> randArrayList = new ArrayList<>();
         for (int i = 0; i < r.nextInt(1, 3200000); i++) {
@@ -22,12 +21,18 @@ class QuickSortTest {
         randArrayList.toArray(al);
 
         int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
-        int[] newSorted = QuickSort.quickSortFEP(arr);
+        int[] newSorted = QuickSort.quickSortFE(arr);
         Arrays.sort(arr);
         assertArrayEquals(newSorted, arr);
 
-        int[] invertedArr = {5,4,3,2,1};
-        int[] invertedSorted = QuickSort.quickSortFEP(invertedArr);
+
+    }
+
+    @Test
+    void quickSortFEInvertedArray() {
+        // Test on sorted inverted array
+        int[] invertedArr = {5, 4, 3, 2, 1};
+        int[] invertedSorted = QuickSort.quickSortFE(invertedArr);
         Arrays.sort(invertedArr);
         assertArrayEquals(invertedSorted, invertedArr);
     }
