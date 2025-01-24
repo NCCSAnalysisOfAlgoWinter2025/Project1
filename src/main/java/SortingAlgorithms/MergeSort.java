@@ -10,6 +10,8 @@ package SortingAlgorithms;
 public class MergeSort {
 
   /**
+   * The Big O, Big Omega and Theta for merge sort is O(n log n)
+   *
    * Sorts an int array with the MergeSort method. Uses the Merge
    * helper method below for merging arrays.
    *
