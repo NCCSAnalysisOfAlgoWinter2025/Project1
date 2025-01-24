@@ -15,7 +15,7 @@ public class MergeSort {
    *
    * @param inputArray the input array of integers to be sorted
    */
-  public void mergeSort(int[] inputArray) {
+  public static void mergeSort(int[] inputArray) {
     int inputLength = inputArray.length;
 
     if (inputLength < 2) {
