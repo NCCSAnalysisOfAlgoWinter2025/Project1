@@ -37,24 +37,27 @@ class QuickSortTest {
         assertArrayEquals(invertedSorted, invertedArr);
     }
 
-//    @Test
-//    void quickSortREP() {
-//        Random r = new Random();
-//        ArrayList<Integer> randArrayList = new ArrayList<>();
-//        for (int i = 0; i < r.nextInt(1, 100); i++) {
-//            randArrayList.add(r.nextInt());
-//        }
-//        Integer[] al = new Integer[randArrayList.size()];
-//        randArrayList.toArray(al);
-//
-//        int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
-//        int[] newSorted = QuickSort.quickSortREP(arr);
-//        Arrays.sort(arr);
-//        assertArrayEquals(newSorted, arr);
-//
-//        int[] invertedArr = {5,4,3,2,1};
-//        int[] invertedSorted = QuickSort.quickSortREP(invertedArr);
-//        Arrays.sort(invertedArr);
-//        assertArrayEquals(invertedSorted, invertedArr);
-//    }
+    @Test
+    void quickSortRERandArray() {
+        Random r = new Random();
+        ArrayList<Integer> randArrayList = new ArrayList<>();
+        for (int i = 0; i < r.nextInt(1, 100); i++) {
+            randArrayList.add(r.nextInt());
+        }
+        Integer[] al = new Integer[randArrayList.size()];
+        randArrayList.toArray(al);
+
+        int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
+        int[] newSorted = QuickSort.quickSortRE(arr);
+        Arrays.sort(arr);
+        assertArrayEquals(newSorted, arr);
+    }
+
+    @Test
+    void quickSortREInvertedArray() {
+        int[] invertedArr = {5,4,3,2,1};
+        int[] invertedSorted = QuickSort.quickSortRE(invertedArr);
+        Arrays.sort(invertedArr);
+        assertArrayEquals(invertedSorted, invertedArr);
+    }
 }
