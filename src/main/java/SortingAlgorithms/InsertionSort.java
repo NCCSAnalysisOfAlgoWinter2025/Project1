@@ -11,7 +11,7 @@ public class InsertionSort{
    *
    * @param inputArray  integer array to be sorted
    */
-  public void insertionSort(int[] inputArray) {
+  public static void insertionSort(int[] inputArray) {
     int len = inputArray.length;
     for (int i = 1; i < len; i++) {
       int temp = inputArray[i];
