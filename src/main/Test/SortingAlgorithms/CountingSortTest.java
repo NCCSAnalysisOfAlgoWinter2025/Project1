@@ -10,9 +10,10 @@ class CountingSortTest {
 
   @Test
   void countingSort() {
-    CountingSort sort = new CountingSort();
+//    CountingSort sort = new CountingSort();
     int[] arr = {9,8,7,6};
-    sort.countingSort(arr);
+//    sort.countingSort(arr);
+    CountingSort.countingSort(arr);
     int[] expected = {6,7,8,9};
     assertArrayEquals(expected, arr);
   }
