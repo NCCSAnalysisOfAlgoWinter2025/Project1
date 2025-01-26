@@ -6,6 +6,7 @@ public class CountingSort {
 
   /**
    * Big O (n + k), Big Omega (n + k) and Theta (n + k)
+   * k represents the range of values in the array
    *
    * Sorts input array with the countingSort algorithm
    *
