@@ -14,6 +14,9 @@ public class CountingSort {
    * copy, I simply followed the graphical explanation of how the
    * algorithm works and wrote my own code.
    *
+   * One disadvantage of this algorithm is that it can only sort
+   * arrays containing non-negative numbers.
+   *
    * @param inputArray integer array to be sorted
    */
 
@@ -39,3 +42,4 @@ public class CountingSort {
     System.arraycopy(outputArray, 0, inputArray, 0, inputArray.length);
   }
 }
+
