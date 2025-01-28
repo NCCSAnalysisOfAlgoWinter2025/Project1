@@ -1,7 +1,7 @@
 package SortingAlgorithms;
 
 import java.util.Arrays;
-// import java.util.Random;
+import java.util.Random;
 
 /**
  * A method wrapper containing multiple implementations of the in-place QuickSort algorithm. <br>
@@ -9,9 +9,12 @@ import java.util.Arrays;
  */
 public class QuickSort {
 
-  // private static final Random r = new Random();
   private static final QuickSortPivotPicker firstElementPicker = (a, s, e) -> s;
-  // private static final QuickSortPivotPicker randomElementPicker = (a, s, e) -> r.nextInt(s, e);
+
+  /* Instance of random is made here for two reasons: I only need to manage one instance,
+  creating a new random every time I want to get a new random number is dumb */
+  private static final Random r = new Random();
+  private static final QuickSortPivotPicker randomElementPicker = (a, s, e) -> r.nextInt(s, e);
 
   private QuickSort() {}
 
@@ -25,6 +28,17 @@ public class QuickSort {
     // make a copy of the array before passing it to the quicksort
     int[] arrayCopy = Arrays.copyOf(array, array.length);
     return genericQuickSort(arrayCopy, 0, array.length - 1, firstElementPicker);
+  }
+
+  /**
+   * QuickSort pivoting on a random element.
+   *
+   * @param array The array you want to sort
+   * @return Returns a sorted copy of the array
+   */
+  public static int[] quickSortRE(int[] array) {
+    int[] arrayCopy = Arrays.copyOf(array, array.length);
+    return genericQuickSort(arrayCopy, 0, array.length - 1, randomElementPicker);
   }
 
   /**
@@ -92,16 +106,11 @@ public class QuickSort {
     // so we just max it;
     rightIndex = Math.max(rightIndex, start);
 
-    genericQuickSort(a, start, rightIndex, firstElementPicker);
-    genericQuickSort(a, rightIndex + 1, end, firstElementPicker);
+    genericQuickSort(a, start, rightIndex, picker);
+    genericQuickSort(a, rightIndex + 1, end, picker);
 
     return a;
   }
-
-  //    public static int[] quickSortREP(int[] array) {
-  //        int[] arrayCopy = Arrays.copyOf(array, array.length);
-  //        return genericQuickSort(array, 0, array.length - 1, randomElementPicker);
-  //    }
 
   private interface QuickSortPivotPicker {
     int pickPivot(int[] array, int arrayStart, int arrayEnd);
