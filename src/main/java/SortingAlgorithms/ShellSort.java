@@ -1,7 +1,10 @@
+package SortingAlgorithms;
 // Shell Sort Implementation
 
 
-public class ShellSort implements SortingAlgorithm {
+public class ShellSort {
+    private ShellSort() {}
+
     /**
      * Implements shell sort algorithm.
      * Time Complexity: O(n^2) worst case, can be O(n log n) depending on gap sequence
@@ -10,8 +13,7 @@ public class ShellSort implements SortingAlgorithm {
      * @param arr Array to be sorted
      * @return Time taken in microseconds
      */
-    @Override
-    public long sort(int[] arr) {
+    public static long sort(int[] arr) {
         long startTime = System.nanoTime();
 
         int n = arr.length;
@@ -33,8 +35,7 @@ public class ShellSort implements SortingAlgorithm {
         return (System.nanoTime() - startTime) / 1000;
     }
 
-    @Override
-    public String getName() {
+    public static String getName() {
         return "Shell Sort";
     }
 }

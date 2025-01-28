@@ -1,10 +1,12 @@
+package SortingAlgorithms;
 // Bucket Sort Implementation
 
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class BucketSort implements SortingAlgorithm {
+public class BucketSort{
+    private BucketSort(){}
     /**
      * Implements bucket sort algorithm.
      * Time Complexity: O(n + k) average case, O(n^2) worst case
@@ -13,8 +15,7 @@ public class BucketSort implements SortingAlgorithm {
      * @param arr Array to be sorted
      * @return Time taken in microseconds
      */
-    @Override
-    public long sort(int[] arr) {
+    public static long sort(int[] arr) {
         long startTime = System.nanoTime();
 
         // Handle empty arrays and single-element arrays
@@ -62,8 +63,7 @@ public class BucketSort implements SortingAlgorithm {
         return (System.nanoTime() - startTime) / 1000;
     }
 
-    @Override
-    public String getName() {
+    public static String getName() {
         return "Bucket Sort";
     }
 }
