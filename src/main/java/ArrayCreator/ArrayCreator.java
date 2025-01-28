@@ -101,15 +101,15 @@ public class ArrayCreator {
    *
    * @return Array with the first 75% ordered
    */
-  @SuppressWarnings({"checkstyle:RightCurly", "checkstyle:NeedBraces"})
+  @SuppressWarnings({"checkstyle:RightCurly", "checkstyle:WhitespaceAfter"})
   public int[] seventyFivePercentOrdered() {
     int[] newArray = new int[this.size];
     int seventyFivePercent = 0;
-    if((this.size % 2) == 0) {
-      seventyFivePercent = (int) (this.size * 0.75);
+    if ((this.size % 2) != 0) {
+      seventyFivePercent = (int) Math.ceil(this.size * 0.75);
     }
     else {
-      seventyFivePercent = (int) Math.ceil(this.size * 0.75);
+      seventyFivePercent = (int) (this.size * 0.75);
     }
 
     int[] firstHalf = Arrays.copyOfRange(this.array, 0, seventyFivePercent);
