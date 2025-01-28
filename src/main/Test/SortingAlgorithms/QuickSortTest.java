@@ -23,7 +23,7 @@ class QuickSortTest {
         int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
         int[] newSorted = QuickSort.quickSortFE(arr);
         Arrays.sort(arr);
-        assertArrayEquals(newSorted, arr);
+        assertArrayEquals(arr, newSorted);
 
 
     }
@@ -34,14 +34,14 @@ class QuickSortTest {
         int[] invertedArr = {5, 4, 3, 2, 1};
         int[] invertedSorted = QuickSort.quickSortFE(invertedArr);
         Arrays.sort(invertedArr);
-        assertArrayEquals(invertedSorted, invertedArr);
+        assertArrayEquals(invertedArr, invertedSorted);
     }
 
     @Test
     void quickSortRERandArray() {
         Random r = new Random();
         ArrayList<Integer> randArrayList = new ArrayList<>();
-        for (int i = 0; i < r.nextInt(1, 100); i++) {
+        for (int i = 0; i < r.nextInt(1, 3200000); i++) {
             randArrayList.add(r.nextInt());
         }
         Integer[] al = new Integer[randArrayList.size()];
@@ -50,7 +50,7 @@ class QuickSortTest {
         int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
         int[] newSorted = QuickSort.quickSortRE(arr);
         Arrays.sort(arr);
-        assertArrayEquals(newSorted, arr);
+        assertArrayEquals(arr, newSorted);
     }
 
     @Test
@@ -58,6 +58,30 @@ class QuickSortTest {
         int[] invertedArr = {5,4,3,2,1};
         int[] invertedSorted = QuickSort.quickSortRE(invertedArr);
         Arrays.sort(invertedArr);
-        assertArrayEquals(invertedSorted, invertedArr);
+        assertArrayEquals(invertedArr, invertedSorted);
+    }
+
+    @Test
+    void quickSortMedianRandomArray() {
+        Random r = new Random();
+        ArrayList<Integer> randArrayList = new ArrayList<>();
+        for (int i = 0; i < r.nextInt(1, 3200000); i++) {
+            randArrayList.add(r.nextInt());
+        }
+        Integer[] al = new Integer[randArrayList.size()];
+        randArrayList.toArray(al);
+
+        int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
+        int[] newSorted = QuickSort.quickSortMedian(arr);
+        Arrays.sort(arr);
+        assertArrayEquals(arr, newSorted);
+    }
+
+    @Test
+    void quickSortMedianInvertedArray() {
+        int[] invertedArr = {5,4,3,2,1};
+        int[] invertedSorted = QuickSort.quickSortMedian(invertedArr);
+        Arrays.sort(invertedArr);
+        assertArrayEquals(invertedArr, invertedSorted);
     }
 }
