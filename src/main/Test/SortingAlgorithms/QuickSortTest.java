@@ -1,0 +1,60 @@
+package SortingAlgorithms;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+import org.junit.jupiter.api.Test;
+
+class QuickSortTest {
+
+    @Test
+    void quickSortFERandArray() {
+        // Test on random array
+        Random r = new Random();
+        ArrayList<Integer> randArrayList = new ArrayList<>();
+        for (int i = 0; i < r.nextInt(1, 3200000); i++) {
+            randArrayList.add(r.nextInt());
+        }
+        Integer[] al = new Integer[randArrayList.size()];
+        randArrayList.toArray(al);
+
+        int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
+        int[] newSorted = QuickSort.quickSortFE(arr);
+        Arrays.sort(arr);
+        assertArrayEquals(newSorted, arr);
+
+
+    }
+
+    @Test
+    void quickSortFEInvertedArray() {
+        // Test on sorted inverted array
+        int[] invertedArr = {5, 4, 3, 2, 1};
+        int[] invertedSorted = QuickSort.quickSortFE(invertedArr);
+        Arrays.sort(invertedArr);
+        assertArrayEquals(invertedSorted, invertedArr);
+    }
+
+//    @Test
+//    void quickSortREP() {
+//        Random r = new Random();
+//        ArrayList<Integer> randArrayList = new ArrayList<>();
+//        for (int i = 0; i < r.nextInt(1, 100); i++) {
+//            randArrayList.add(r.nextInt());
+//        }
+//        Integer[] al = new Integer[randArrayList.size()];
+//        randArrayList.toArray(al);
+//
+//        int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
+//        int[] newSorted = QuickSort.quickSortREP(arr);
+//        Arrays.sort(arr);
+//        assertArrayEquals(newSorted, arr);
+//
+//        int[] invertedArr = {5,4,3,2,1};
+//        int[] invertedSorted = QuickSort.quickSortREP(invertedArr);
+//        Arrays.sort(invertedArr);
+//        assertArrayEquals(invertedSorted, invertedArr);
+//    }
+}
