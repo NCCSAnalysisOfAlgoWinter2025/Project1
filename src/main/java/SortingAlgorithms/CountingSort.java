@@ -1,8 +1,9 @@
 package SortingAlgorithms;
 
+import Results.SortAlgorithm;
 import java.util.Arrays;
 
-public class CountingSort {
+public class CountingSort implements SortAlgorithm  {
 
   /**
    * Big O (n + k), Big Omega (n + k) and Theta (n + k)
@@ -20,8 +21,8 @@ public class CountingSort {
    *
    * @param inputArray integer array to be sorted
    */
-
-  public static void countingSort(int[] inputArray){
+  @Override
+  public void sort(int[] inputArray){
     int max = Arrays.stream(inputArray).max().orElseThrow();
 
     int[] countArray = new int[max + 1];

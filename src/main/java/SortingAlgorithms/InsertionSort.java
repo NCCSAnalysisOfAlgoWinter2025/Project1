@@ -1,10 +1,12 @@
 package SortingAlgorithms;
 
+import Results.SortAlgorithm;
+
 /**
  * I implemented this algorithm from memory.
  */
 
-public class InsertionSort{
+public class InsertionSort implements SortAlgorithm {
 
   /**
    * Big O (n^2), Big Omega (n) and Theta (n^2)
@@ -13,7 +15,8 @@ public class InsertionSort{
    *
    * @param inputArray  integer array to be sorted
    */
-  public static void insertionSort(int[] inputArray) {
+  @Override
+  public void sort(int[] inputArray) {
     int len = inputArray.length;
     for (int i = 1; i < len; i++) {
       int temp = inputArray[i];
