@@ -14,30 +14,40 @@ import ArrayCreator.ArrayCreator;
 
 public class ChartCreator {
 
-  private SortAlgorithm sort;
+  private SortAlgorithm currentSort;
   private ArrayMethod arrayMethod;
   private String xy;
   private String chart;
   private String png;
 
-  public ChartCreator(SortAlgorithm sort, ArrayMethod arrayMethod, String xy, String chart, String png){
-    this.sort = sort;
+  public ChartCreator(SortAlgorithm currentSort, ArrayMethod arrayMethod, String xy, String chart, String png){
+    this.currentSort = currentSort;
     this.arrayMethod = arrayMethod;
     this.xy = xy;
     this.chart = chart;
     this.png = png;
   }
 
+  /**
+   * Runs the algorithm labeled currentSort and times it
+   * @param inputArray array to be sorted
+   * @return time in milliseconds(ms) it took for the array to be sorted
+   */
   public long timer(ArrayCreator inputArray){
     int len = inputArray.getSize();
     long start = System.currentTimeMillis();
-    sort.sort(arrayMethod.execute(inputArray));
+    currentSort.sort(arrayMethod.execute(inputArray));
     long end = System.currentTimeMillis();
     long time = end - start;
     System.out.printf("Array size %d: %dms\n", len, time);
     return time;
   }
 
+  /**
+   * Creates an X/Y axis chart that shows how the algorithm performs across
+   * different iterations of the original array and also different sizes of
+   * each of those arrays
+   */
   public void createChart(){
     // Create dataset
     XYSeriesCollection dataset = new XYSeriesCollection();
