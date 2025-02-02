@@ -53,9 +53,9 @@ public class ChartCreator {
     XYSeriesCollection dataset = new XYSeriesCollection();
     XYSeries series = new XYSeries(this.xy);
 
-    for(int i = 4;i <= 32768;i*=2){
-      ArrayCreator array = new ArrayCreator(i);
-      series.add(i, timer(array));
+    for(int i = 4;i <= 32768;i *= 2){
+      ArrayCreator arrayCreator = new ArrayCreator(i);
+      series.add(i, timer(arrayCreator));
     }
     dataset.addSeries(series);
 
