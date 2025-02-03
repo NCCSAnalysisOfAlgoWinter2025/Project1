@@ -26,7 +26,7 @@ public class RunMergeSortCharts {
 
     ChartCreator reversed = new ChartCreator(
             mergeSort,
-            arrayCreator -> arrayCreator.orderedArray(), // Ordered array
+            arrayCreator -> arrayCreator.reversedArray(), // Ordered array
             "Merge Sort Performance (Reversed)",
             "Merge Sort Chart (Reversed)",
             "mergeSortChartReversed.png"

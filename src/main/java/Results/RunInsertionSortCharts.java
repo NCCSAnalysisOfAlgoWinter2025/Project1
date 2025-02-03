@@ -24,7 +24,7 @@ public class RunInsertionSortCharts {
 
     ChartCreator reversed = new ChartCreator(
             insertionSort,
-            arrayCreator -> arrayCreator.orderedArray(), // Ordered array
+            arrayCreator -> arrayCreator.reversedArray(), // Ordered array
             "Insertion Sort Performance (Reversed)",
             "Insertion Sort Chart (Reversed)",
             "insertionSortChartReversed.png"

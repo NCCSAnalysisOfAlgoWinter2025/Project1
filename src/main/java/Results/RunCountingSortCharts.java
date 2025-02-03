@@ -24,7 +24,7 @@ public class RunCountingSortCharts {
 
     ChartCreator reversed = new ChartCreator(
             countingSort,
-            arrayCreator -> arrayCreator.orderedArray(), // Ordered array
+            arrayCreator -> arrayCreator.reversedArray(), // Ordered array
             "Insertion Sort Performance (Reversed)",
             "Counting Sort Chart (Reversed)",
             "countingSortChartReversed.png"
