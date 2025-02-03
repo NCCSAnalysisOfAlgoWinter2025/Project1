@@ -1,9 +1,11 @@
 package SortingAlgorithms;
 
+import Results.SortAlgorithm;
+
 /**
  * This class is in charge of storing the Heap Sort algorithm.
  */
-public class HeapSort {
+public class HeapSort implements SortAlgorithm {
 
   /**
    * Transforms an integer array such that it represents a heap data structure, and iteratively calls heapify on the
@@ -12,7 +14,8 @@ public class HeapSort {
    *
    * @param arr The array to sort.
    */
-  public static void sort(int[] arr) {
+  @Override
+  public void sort(int[] arr) {
     int temp;
     buildHeap(arr, arr.length);
 
@@ -32,7 +35,7 @@ public class HeapSort {
    * @param heapSize The size of the heap, in this case the length of the array.
    * @param idx The index of the value to heapify (replace with the largest value, if found), usually the first index.
    */
-  private static void heapify(int[] arr, int heapSize, int idx) {
+  private void heapify(int[] arr, int heapSize, int idx) {
     int largest = idx;
     int temp;
     int left = idx * 2 + 1;
@@ -61,7 +64,7 @@ public class HeapSort {
    * @param arr The array to transform.
    * @param heapSize The size of the heap, usually the length of the array.
    */
-  private static void buildHeap(int[] arr, int heapSize) {
+  private void buildHeap(int[] arr, int heapSize) {
     for (int i = heapSize / 2 - 1; i >= 0; i--) {
       heapify(arr, heapSize, i);
     }
