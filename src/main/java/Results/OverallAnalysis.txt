@@ -1,0 +1,43 @@
+Counting sort ended up being a little bit faster overall than merge sort did. This matches
+the theoretical results since counting sort is O(n + k) and merge sort is O(n log n). I'm going
+to compare those two run times for an array size of 32,768. I will use 40,000 as the range for
+counting sort below since that is the highest number that will be used in our experiment.
+
+Counting sort, k = 40,000, n + k = 32,768 + 40,000 = 72,768 operations
+Merge sort, log n = log 32768 = 15, so n log n = 32,768 * 15 = 491,520
+
+From this, for array sizes not larger than 32,768 and element ranges not larger than 40,000
+counting sort is the clear winner. The problem with counting sort is that it is O(n + k). So,
+to figure out where counting sort will start being less efficient we can look at the numbers
+above. If we subtract n from the merge sort operations then we get (491,520 - 32,768 = 458,752).
+So at an integer range of 458,753 merge sort will start running faster. If we had an extremely
+large number range of let's say 1 billion then counting sort would be much slower. I will show
+those calculations below.
+
+n = 32,768
+log n  = 15
+k = 1,000,000,000
+Merge sort = 32,768 * 15 = 491,520
+Counting sort = 32,768 + 1,000,000,000 = 1,000,032,768
+
+Thus, in that experiment merge sort is running just shy of a half million operations and counting
+sort is running a little over 1 billion. This matches the theoretical analysis since the integer
+range makes no difference to merge sort but is critical in the analysis of counting sort.
+
+Insertion sort ran as expected since it runs at O(n^2). For all of the experiments merge sort's
+highest run time was 4ms, counting sort's highest run time was 3ms and insertion sort's highest
+run time was 800 ms. In small data sets of 2,048 and below insertion sort was somewhat comparable
+to merge sort and insertion sort, but after that it really started to slow down. At an array size
+of 32,768 insertion sort will run in 32768^2.
+
+32768^2 = 1,073,741,824
+From these results we can see that if our number range was 1 billion that at an array size of 32,768
+insertions sort and counting sort almost have the same number of operations. So if we were to have a
+integer range of 2 billion then insertion sort would have roughly half the operations of counting sort.
+With that number range merge sort would be unchanged with it's 481,520 operations.
+
+Thus up to a number range of 458,752 counting sort is the clear winner, with a number range above that
+merge sort takes over and with a range of 2 billion insertion sort is better than counting sort. Thus, if
+the range is below 458,753 use counting sort and anything higher use merge sort. Insertion sort will always
+run more slowly than both except with extremely high integer ranges, but that is irrelevant because you
+just use merge sort in that case anyway.
