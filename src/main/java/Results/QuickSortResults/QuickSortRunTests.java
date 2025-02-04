@@ -1,9 +1,7 @@
 package Results.QuickSortResults;
 
 import ArrayCreator.ArrayCreator;
-import SortingAlgorithms.QuickSortFE;
-import SortingAlgorithms.QuickSortMedian;
-import SortingAlgorithms.QuickSortRE;
+import SortingAlgorithms.QuickSort;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.*;
@@ -21,7 +19,7 @@ public class QuickSortRunTests {
   }
 
   private static void saveData(String generateData) {
-    File file = new File("./results/QuickSortResults/QuickSortResults.json");
+    File file = new File("./QuickSortResults.json");
     if (file.exists()) {
       if (file.canWrite()) {
         file.delete();
@@ -32,7 +30,7 @@ public class QuickSortRunTests {
 //      System.exit(1);
 //    }
     try {
-      var result = file.createNewFile();
+      file.createNewFile();
     } catch (IOException e) {
       System.out.println("Something went wrong when creating the file: " + e.getMessage());
       System.exit(1);
@@ -93,8 +91,8 @@ public class QuickSortRunTests {
     List<AlgoTests> allData = new LinkedList<>();
 
 //    allData.add(runTests("QuickSort Pivot First Element", QuickSortFE::sort));
-    allData.add(runTests("QuickSort Pivot Random Element", QuickSortRE::sort));
-    allData.add(runTests("QuickSort Pivot Median of 3", QuickSortMedian::sort));
+    allData.add(runTests("QuickSort Pivot Random Element", QuickSort::quickSortRE));
+    allData.add(runTests("QuickSort Pivot Median of 3", QuickSort::quickSortMedian));
 
 
     ObjectMapper mapper = new ObjectMapper();
@@ -126,7 +124,7 @@ public class QuickSortRunTests {
       long startTime = System.nanoTime();
       algo.sort(arrToSort); // not storing result cause we literally don't care
       long endTime = System.nanoTime();
-      long elapsedTimeMS = Math.absExact((endTime - startTime) / 1_000_000);
+      long elapsedTimeMS = Math.absExact((endTime - startTime));
 
       dataRand.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS));
 
