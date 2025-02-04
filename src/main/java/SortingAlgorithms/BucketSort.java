@@ -13,6 +13,7 @@ public class BucketSort implements SortAlgorithm {
      *
      * @param arr Array to be sorted
      */
+    @Override
     public void sort(int[] arr) {
         // Handle empty arrays and single-element arrays
         if (arr.length <= 1) {

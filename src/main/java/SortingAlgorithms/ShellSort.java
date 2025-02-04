@@ -11,6 +11,7 @@ public class ShellSort implements SortAlgorithm {
      *
      * @param arr Array to be sorted
      */
+    @Override
     public void sort(int[] arr) {
         int n = arr.length;
 

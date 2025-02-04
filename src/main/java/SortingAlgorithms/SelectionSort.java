@@ -11,6 +11,7 @@ public class SelectionSort implements SortAlgorithm {
      *
      * @param arr Array to be sorted
      */
+    @Override
     public void sort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
