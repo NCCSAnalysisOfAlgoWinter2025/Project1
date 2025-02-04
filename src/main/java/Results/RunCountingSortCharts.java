@@ -17,7 +17,7 @@ public class RunCountingSortCharts {
     ChartCreator ordered = new ChartCreator(
             countingSort,
             arrayCreator -> arrayCreator.orderedArray(), // Ordered array
-            "Insertion Sort Performance (Ordered)",
+            "Counting Sort Performance (Ordered)",
             "Counting Sort Chart (Ordered)",
             "countingSortChartOrdered.png"
     );
@@ -25,7 +25,7 @@ public class RunCountingSortCharts {
     ChartCreator reversed = new ChartCreator(
             countingSort,
             arrayCreator -> arrayCreator.reversedArray(), // Ordered array
-            "Insertion Sort Performance (Reversed)",
+            "Counting Sort Performance (Reversed)",
             "Counting Sort Chart (Reversed)",
             "countingSortChartReversed.png"
     );
@@ -33,7 +33,7 @@ public class RunCountingSortCharts {
     ChartCreator fiftyPercentOrdered = new ChartCreator(
             countingSort,
             arrayCreator -> arrayCreator.fiftyPercentOrdered(), // 50% ordered array
-            "Insertion Sort Performance (50% Ordered)",
+            "Counting Sort Performance (50% Ordered)",
             "Counting Sort Chart (50% Ordered)",
             "countingSortChart50ordered.png"
     );
@@ -41,7 +41,7 @@ public class RunCountingSortCharts {
     ChartCreator seventyFivePercentOrdered = new ChartCreator(
             countingSort,
             arrayCreator -> arrayCreator.seventyFivePercentOrdered(), // 50% ordered array
-            "Insertion Sort Performance (75% Ordered)",
+            "Counting Sort Performance (75% Ordered)",
             "Counting Sort Chart (75% Ordered)",
             "countingSortChart75ordered.png"
     );

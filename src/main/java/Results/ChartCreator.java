@@ -68,11 +68,11 @@ public class ChartCreator {
     );
 
     // Save the chart as a PNG file
-//    try {
-//      ChartUtils.saveChartAsPNG(new File(this.png), chart, 800, 600);
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
+    try {
+      ChartUtils.saveChartAsPNG(new File(this.png), chart, 800, 600);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
 
