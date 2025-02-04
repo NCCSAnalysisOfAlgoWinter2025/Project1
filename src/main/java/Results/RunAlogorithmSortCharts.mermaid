@@ -1,0 +1,45 @@
+classDiagram
+    class SortAlgorithm {
+        <<interface>>
+        +sort(int[] arr)
+        +timer(ArrayCreator inputArray) long
+    }
+    
+    class ArrayCreator {
+        -size: int
+        -data: int[]
+        +generateRandomArray() int[]
+        +generateOrderedArray() int[]
+        +generateReverseOrderedArray() int[]
+        +generate50PercentOrdered() int[]
+        +generate75PercentOrdered() int[]
+        +getSize() int
+        +setSize(int size) void
+    }
+    
+    class ExperimentRunner {
+        -algorithms: List~SortAlgorithm~
+        -arraySizes: int[]
+        +runExperiment() void
+        +generateResults() void
+    }
+    
+    class ResultsVisualizer {
+        +createChart(Map results) void
+        +saveToFile(String filename) void
+    }
+    
+    BubbleSort ..|> SortAlgorithm
+    BucketSort ..|> SortAlgorithm
+    CountingSort ..|> SortAlgorithm
+    HeapSort ..|> SortAlgorithm
+    InsertionSort ..|> SortAlgorithm
+    MergeSort ..|> SortAlgorithm
+    QuickSort ..|> SortAlgorithm
+    RadixSort ..|> SortAlgorithm
+    SelectionSort ..|> SortAlgorithm
+    ShellSort ..|> SortAlgorithm
+    
+    ExperimentRunner --> ArrayCreator
+    ExperimentRunner --> SortAlgorithm
+    ExperimentRunner --> ResultsVisualizer
