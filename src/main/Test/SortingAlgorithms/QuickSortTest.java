@@ -21,7 +21,7 @@ class QuickSortTest {
         randArrayList.toArray(al);
 
         int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
-        int[] newSorted = QuickSort.quickSortFE(arr);
+        int[] newSorted = QuickSortFE.sort(arr);
         Arrays.sort(arr);
         assertArrayEquals(arr, newSorted);
 
@@ -32,7 +32,7 @@ class QuickSortTest {
     void quickSortFEInvertedArray() {
         // Test on sorted inverted array
         int[] invertedArr = {5, 4, 3, 2, 1};
-        int[] invertedSorted = QuickSort.quickSortFE(invertedArr);
+        int[] invertedSorted = QuickSortFE.sort(invertedArr);
         Arrays.sort(invertedArr);
         assertArrayEquals(invertedArr, invertedSorted);
     }
@@ -48,7 +48,7 @@ class QuickSortTest {
         randArrayList.toArray(al);
 
         int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
-        int[] newSorted = QuickSort.quickSortRE(arr);
+        int[] newSorted = QuickSortRE.sort(arr);
         Arrays.sort(arr);
         assertArrayEquals(arr, newSorted);
     }
@@ -56,7 +56,7 @@ class QuickSortTest {
     @Test
     void quickSortREInvertedArray() {
         int[] invertedArr = {5,4,3,2,1};
-        int[] invertedSorted = QuickSort.quickSortRE(invertedArr);
+        int[] invertedSorted = QuickSortRE.sort(invertedArr);
         Arrays.sort(invertedArr);
         assertArrayEquals(invertedArr, invertedSorted);
     }
@@ -72,7 +72,7 @@ class QuickSortTest {
         randArrayList.toArray(al);
 
         int[] arr = Arrays.stream(al).mapToInt(Integer::intValue).toArray();
-        int[] newSorted = QuickSort.quickSortMedian(arr);
+        int[] newSorted = QuickSortMedian.sort(arr);
         Arrays.sort(arr);
         assertArrayEquals(arr, newSorted);
     }
@@ -80,7 +80,7 @@ class QuickSortTest {
     @Test
     void quickSortMedianInvertedArray() {
         int[] invertedArr = {5,4,3,2,1};
-        int[] invertedSorted = QuickSort.quickSortMedian(invertedArr);
+        int[] invertedSorted = QuickSortMedian.sort(invertedArr);
         Arrays.sort(invertedArr);
         assertArrayEquals(invertedArr, invertedSorted);
     }
