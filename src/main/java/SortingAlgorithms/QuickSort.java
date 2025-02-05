@@ -12,24 +12,28 @@ public class QuickSort {
   /* Instance of random is made here for two reasons: I only need to manage one instance,
   creating a new random every time I want to get a new random number is dumb */
   private static final Random r = new Random();
-  private static final QuickSortPivotPicker randomElementPicker = (a, s, e) -> r.nextInt(s, e);
+  private static final QuickSortPivotPicker randomElementPicker = (_, s, e) -> r.nextInt(s, e);
   // small memory optimization
   private static int temp;
+
+  private static int numOfElemsToGrabForMedian = 1;
+  private static int[] littleArrVals = new int[3 * numOfElemsToGrabForMedian];
+  private static int[] littleArrIndex = new int[3 * numOfElemsToGrabForMedian];
+
   private static final QuickSortPivotPicker medianOfThreePicker =
       (a, s, e) -> {
 
         // How many elements to pick out from start, middle, and end
-        int numOfElemsToGrabForMedian = 5;
 
-        // Go to 1 if we literally can't grab enough elements
-        if ((e + 1 - s) / (3.0 * numOfElemsToGrabForMedian) < 1.0) {
-          numOfElemsToGrabForMedian = 1;
-        }
+
+//        // Go to 1 if we literally can't grab enough elements
+//        if ((e + 1 - s) / (3.0 * numOfElemsToGrabForMedian) < 1.0) {
+//          numOfElemsToGrabForMedian = 1;
+//        }
 
         /* Parallel arrays, the littleArrIndex will be sorted according to littleArrVals,
         so we can later return an index not a value */
-        int[] littleArrVals = new int[3 * numOfElemsToGrabForMedian];
-        int[] littleArrIndex = new int[3 * numOfElemsToGrabForMedian];
+
 
         // populate
         for (int i = 0; i < numOfElemsToGrabForMedian; i++) {
