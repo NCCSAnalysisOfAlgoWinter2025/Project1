@@ -1,4 +1,4 @@
-package Results.QuickSortResults;
+package Results;
 
 import ArrayCreator.ArrayCreator;
 import SortingAlgorithms.QuickSort;
@@ -15,7 +15,7 @@ public class QuickSortRunTests {
   public static void main(String[] args) {
     String generateData = generateData();
     saveData(generateData);
-    //    openWebsite();
+    openWebsite();
   }
 
   private static void saveData(String generateData) {
@@ -23,7 +23,8 @@ public class QuickSortRunTests {
     if (file.exists()) {
       if (file.canWrite()) {
         file.delete();
-      }
+      }    //    openWebsite();
+
     }
     //    if (!file.canWrite()) {
     //      System.out.println("Can't write to file");
@@ -177,11 +178,11 @@ public class QuickSortRunTests {
   }
 
   private static class AlgoTests {
-    public final String AlgoName;
+    public final String algoName;
     public final List<AlgoTest> tests = new LinkedList<>();
 
-    public AlgoTests(String AlgoName) {
-      this.AlgoName = AlgoName;
+    public AlgoTests(String algoName) {
+      this.algoName = algoName;
     }
 
     public void addTest(AlgoTest test) {
