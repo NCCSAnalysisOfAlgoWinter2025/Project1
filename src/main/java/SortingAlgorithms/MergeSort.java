@@ -1,5 +1,6 @@
 package SortingAlgorithms;
 
+import Results.SortAlgorithm;
 /**
  * The code below is from "Coding with John" YouTube channel. I made a couple changes such
  * as the variable names in merge from i,j,k to leftPos,rightPos and arrPos so they are
@@ -7,7 +8,7 @@ package SortingAlgorithms;
  * implementation less confusing than others I had found.
  */
 
-public class MergeSort {
+public class MergeSort implements SortAlgorithm {
 
   /**
    * The Big O, Big Omega and Theta for merge sort is O(n log n)
@@ -17,7 +18,8 @@ public class MergeSort {
    *
    * @param inputArray the input array of integers to be sorted
    */
-  public static void mergeSort(int[] inputArray) {
+  @Override
+  public void sort(int[] inputArray) {
     int inputLength = inputArray.length;
 
     if (inputLength < 2) {
@@ -36,8 +38,8 @@ public class MergeSort {
     System.arraycopy(inputArray, 0, leftHalf, 0, midIndex);
     System.arraycopy(inputArray, midIndex, rightHalf, 0, inputLength - midIndex);
 
-    mergeSort(leftHalf);
-    mergeSort(rightHalf);
+    sort(leftHalf);
+    sort(rightHalf);
 
     merge(inputArray, leftHalf, rightHalf);
   }
