@@ -1,10 +1,12 @@
 package SortingAlgorithms;
 
+import Results.SortAlgorithm;
+
 /**
  * This class is in charge of storing the Radix Sort algorithm and all of its necessary helper
  * methods.
  */
-public class RadixSort {
+public class RadixSort implements SortAlgorithm {
 
   /**
    * This method prepares the input integer array for the sorting process. Once the input array has been separated into
@@ -14,7 +16,8 @@ public class RadixSort {
    *
    * @param arr The array to prepare and sort.
    */
-  public static void sort(int[] arr) {
+  @Override
+  public void sort(int[] arr) {
     int[][] negAndPosArrays = splitArr(arr);
     int universalIdx = 0;
 
@@ -59,7 +62,7 @@ public class RadixSort {
    *
    * @param arr The array to sort.
    */
-  private static void radixSortAlgorithm(int[] arr) {
+  private void radixSortAlgorithm(int[] arr) {
     int max = findArrMax(arr);
     for (int divisor = 1; max / divisor > 0; divisor *= 10) {
       countingSort(arr, divisor);
@@ -74,7 +77,7 @@ public class RadixSort {
    * @param arr The array to sort.
    * @param div The value to divide an integer by, used with modulo to put focus on certain digits.
    */
-  private static void countingSort(int[] arr, int div) {
+  private void countingSort(int[] arr, int div) {
     int[] countArr = new int[10]; // size 10 since digits range from 0 to 9
 
     for (int value : arr) {
@@ -106,7 +109,7 @@ public class RadixSort {
    * @param arr The array to be split.
    * @return A 2D array where the first index holds the negative array and the second index holds the positive array.
    */
-  private static int[][] splitArr(int[] arr) {
+  private int[][] splitArr(int[] arr) {
     if (arr == null || arr.length == 0) {
       throw new IllegalArgumentException("Array must not be null or empty.");
     } else {
@@ -153,7 +156,7 @@ public class RadixSort {
    * @param arr The array to scan.
    * @return The largest value in the array.
    */
-  private static int findArrMax(int[] arr) {
+  private int findArrMax(int[] arr) {
     if (arr == null || arr.length == 0) {
       throw new IllegalArgumentException("Array must not be null or empty.");
     } else {

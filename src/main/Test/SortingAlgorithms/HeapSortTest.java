@@ -3,13 +3,13 @@ package SortingAlgorithms;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RadixSortTest {
+class HeapSortTest {
 
   @Test
   void sort() {
-    RadixSort radixSort = new RadixSort();
+    HeapSort heapSort = new HeapSort();
     int[] arr = {9, 8, 7, 6};
-    radixSort.sort(arr);
+    heapSort.sort(arr);
     int[] expected = {6, 7, 8, 9};
     assertArrayEquals(expected, arr);
   }

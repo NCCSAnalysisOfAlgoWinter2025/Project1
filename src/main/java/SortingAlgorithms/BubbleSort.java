@@ -1,9 +1,11 @@
 package SortingAlgorithms;
 
+import Results.SortAlgorithm;
+
 /**
  * This class is in charge of storing the Bubble Sort algorithm.
  */
-public class BubbleSort {
+public class BubbleSort implements SortAlgorithm {
 
   /**
    * An implementation of the Bubble Sort algorithm. In this algorithm, the largest value of an integer array is
@@ -12,7 +14,8 @@ public class BubbleSort {
    *
    * @param arr The array to sort.
    */
-  public static void sort(int[] arr) {
+  @Override
+  public void sort(int[] arr) {
     for (int passIdx = 0; passIdx < arr.length - 1; passIdx++) {
       boolean swapped = false;
       for (int chkIdx = 0; chkIdx < arr.length - passIdx - 1; chkIdx++) {
