@@ -1,8 +1,12 @@
 package Results;
 
-import ArrayCreator.ArrayCreator;
 
+/**
+ * Function interface for passing specific sorting algorithm into the constructor
+ * of the ChartCreator class
+ */
+@FunctionalInterface
 public interface SortAlgorithm {
-    void sort(int[] array);
-
+  void sort(int[] array);
 }
+
