@@ -20,7 +20,7 @@ const DataUpload: React.FC<{
                     <img src={reactLogo} className="w-32 animate-spin inline" />
                 </div>
                 <div className="text-center">
-                    <h1 className="m-10 text-3xl motion-preset-seesaw-md">
+                    <h1 className="m-10 text-3xl motion-preset-shake motion-loop-infinite">
                         Please select <FaFile className="inline" />
                         QuickSort.json (it should be under the Project1 folder)
                     </h1>
@@ -39,7 +39,7 @@ const DataUpload: React.FC<{
                                 data = JSON.parse(
                                     await e.target.files[0].text()
                                 );
-                                setJsonData(data as JSON);
+                                setJsonData(data as unknown as AlgoTests[]);
                                 updateStage(curStage + 1);
                             } catch {
                                 changeValidity(false);

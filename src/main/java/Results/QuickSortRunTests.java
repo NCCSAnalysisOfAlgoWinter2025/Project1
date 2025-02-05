@@ -8,8 +8,10 @@ import java.awt.*;
 import java.io.*;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class QuickSortRunTests {
   public static void main(String[] args) {
@@ -23,8 +25,7 @@ public class QuickSortRunTests {
     if (file.exists()) {
       if (file.canWrite()) {
         file.delete();
-      }    //    openWebsite();
-
+      } //    openWebsite();
     }
     //    if (!file.canWrite()) {
     //      System.out.println("Can't write to file");
@@ -70,13 +71,21 @@ public class QuickSortRunTests {
     } else {
       System.out.println("Detected Linux/OSX. Opening website...");
     }
-    builder.command("sh", "-c", "npm install;npm run dev & open localhost:5173");
+    builder.command("sh", "-c", "npm install;open ./ & open localhost:5173");
 
     Process process = null;
     try {
       process = builder.start();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+      process.waitFor(30, TimeUnit.SECONDS);
+      BufferedReader bufferedReader =
+          new BufferedReader(new InputStreamReader(process.getInputStream()));
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        System.out.println(line);
+      }
+      boolean isFinished = process.waitFor(30, TimeUnit.SECONDS);
+    } catch (Exception e) {
+      System.out.println("Something went wrong when opening the website: " + e.getMessage());
     }
   }
 
@@ -106,17 +115,27 @@ public class QuickSortRunTests {
     AlgoTest data50PerOrd = new AlgoTest("50% Ordered Array");
     AlgoTest data75PerOrd = new AlgoTest("75% Ordered Array");
 
+    // warm up the JVM
+    algo.sort(new int[] {1, 2, 3, 4});
+
     for (int i = 1; i < 16; i++) {
       ArrayCreator arr = new ArrayCreator((int) Math.abs(Math.pow(2, i)));
-      int[] arrToSort = arr.array();
+      int[] arrToSort;
+
+      long startTime = System.nanoTime();
+      long endTime = System.nanoTime();
+      long elapsedTime = 1;
 
       // Random
-      long startTime = System.nanoTime();
+      arrToSort = Arrays.copyOfRange(arr.array(), 0, arr.array().length);
+      startTime = System.nanoTime();
       algo.sort(arrToSort); // not storing result cause we literally don't care
-      long endTime = System.nanoTime();
-      long elapsedTimeMS = Math.absExact((endTime - startTime));
+      endTime = System.nanoTime();
+      elapsedTime = Math.absExact((endTime - startTime));
 
-      dataRand.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
+      data50PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTime, true));
+
+      dataRand.addDataPoint(new DataPoint(arr.getSize(), elapsedTime, true));
 
       // Reversed
       arrToSort = arr.reversedArray();
@@ -124,9 +143,9 @@ public class QuickSortRunTests {
         startTime = System.nanoTime();
         algo.sort(arrToSort); // not storing result cause we literally don't care
         endTime = System.nanoTime();
-        elapsedTimeMS = Math.absExact((endTime - startTime));
+        elapsedTime = Math.absExact((endTime - startTime));
 
-        dataRevOr.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
+        dataRevOr.addDataPoint(new DataPoint(arr.getSize(), elapsedTime, true));
       } catch (StackOverflowError e) {
         dataRevOr.addDataPoint(new DataPoint(arr.getSize(), 0, false));
       }
@@ -137,9 +156,9 @@ public class QuickSortRunTests {
         startTime = System.nanoTime();
         algo.sort(arrToSort); // not storing result cause we literally don't care
         endTime = System.nanoTime();
-        elapsedTimeMS = Math.absExact((endTime - startTime));
+        elapsedTime = Math.absExact((endTime - startTime));
 
-        dataOrdered.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
+        dataOrdered.addDataPoint(new DataPoint(arr.getSize(), elapsedTime, true));
       } catch (StackOverflowError e) {
         dataOrdered.addDataPoint(new DataPoint(arr.getSize(), 0, false));
       }
@@ -149,18 +168,18 @@ public class QuickSortRunTests {
       startTime = System.nanoTime();
       algo.sort(arrToSort); // not storing result cause we literally don't care
       endTime = System.nanoTime();
-      elapsedTimeMS = Math.absExact((endTime - startTime));
+      elapsedTime = Math.absExact((endTime - startTime));
 
-      data50PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
+      data50PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTime, true));
 
       // 75% ordered
       arrToSort = arr.seventyFivePercentOrdered();
       startTime = System.nanoTime();
       algo.sort(arrToSort); // not storing result cause we literally don't care
       endTime = System.nanoTime();
-      elapsedTimeMS = Math.absExact((endTime - startTime));
+      elapsedTime = Math.absExact((endTime - startTime));
 
-      data75PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
+      data75PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTime, true));
     }
 
     results.addTest(dataRand);

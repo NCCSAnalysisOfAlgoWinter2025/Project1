@@ -15,21 +15,25 @@ public class QuickSort {
   private static final QuickSortPivotPicker randomElementPicker = (_, s, e) -> r.nextInt(s, e);
   // small memory optimization
   private static int temp;
+
+  private static int numOfElemsToGrabForMedian = 1;
+  private static int[] littleArrVals = new int[3 * numOfElemsToGrabForMedian];
+  private static int[] littleArrIndex = new int[3 * numOfElemsToGrabForMedian];
+
   private static final QuickSortPivotPicker medianOfThreePicker =
       (a, s, e) -> {
 
         // How many elements to pick out from start, middle, and end
-        int numOfElemsToGrabForMedian = 5;
 
-        // Go to 1 if we literally can't grab enough elements
-        if ((e + 1 - s) / (3.0 * numOfElemsToGrabForMedian) < 1.0) {
-          numOfElemsToGrabForMedian = 1;
-        }
+
+//        // Go to 1 if we literally can't grab enough elements
+//        if ((e + 1 - s) / (3.0 * numOfElemsToGrabForMedian) < 1.0) {
+//          numOfElemsToGrabForMedian = 1;
+//        }
 
         /* Parallel arrays, the littleArrIndex will be sorted according to littleArrVals,
         so we can later return an index not a value */
-        int[] littleArrVals = new int[3 * numOfElemsToGrabForMedian];
-        int[] littleArrIndex = new int[3 * numOfElemsToGrabForMedian];
+
 
         // populate
         for (int i = 0; i < numOfElemsToGrabForMedian; i++) {
