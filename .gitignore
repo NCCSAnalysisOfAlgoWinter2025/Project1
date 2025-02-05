@@ -28,6 +28,6 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-Project1.iml
+
 .idea/
 /QuickSortResults.json
