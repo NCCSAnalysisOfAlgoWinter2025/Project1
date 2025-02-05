@@ -1,0 +1,81 @@
+INSERTION SORT RUN TIMES
+
+RANDOM
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 1ms
+Array size 256: 0ms
+Array size 512: 1ms
+Array size 1024: 1ms
+Array size 2048: 3ms
+Array size 4096: 5ms
+Array size 8192: 32ms
+Array size 16384: 129ms
+Array size 32768: 478ms
+
+ORDERED
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 0ms
+Array size 512: 0ms
+Array size 1024: 1ms
+Array size 2048: 1ms
+Array size 4096: 3ms
+Array size 8192: 10ms
+Array size 16384: 37ms
+Array size 32768: 137ms
+
+REVERSED
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 0ms
+Array size 512: 0ms
+Array size 1024: 1ms
+Array size 2048: 3ms
+Array size 4096: 13ms
+Array size 8192: 54ms
+Array size 16384: 202ms
+Array size 32768: 800ms
+
+50% ORDERED
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 0ms
+Array size 512: 0ms
+Array size 1024: 0ms
+Array size 2048: 2ms
+Array size 4096: 6ms
+Array size 8192: 24ms
+Array size 16384: 96ms
+Array size 32768: 384ms
+
+75% ORDERED
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 0ms
+Array size 512: 0ms
+Array size 1024: 1ms
+Array size 2048: 1ms
+Array size 4096: 4ms
+Array size 8192: 18ms
+Array size 16384: 70ms
+Array size 32768: 287ms

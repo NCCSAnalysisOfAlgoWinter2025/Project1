@@ -24,6 +24,10 @@ public class ArrayCreator {
     this.array = this.randomArray();
   }
 
+  public int getSize(){
+    return this.size;
+  }
+
   /**
    * Builds a random array of numbers between zero and 40,000
    *
