@@ -15,7 +15,7 @@ public class QuickSortRunTests {
   public static void main(String[] args) {
     String generateData = generateData();
     saveData(generateData);
-    //openWebsite();
+    //    openWebsite();
   }
 
   private static void saveData(String generateData) {
@@ -25,10 +25,10 @@ public class QuickSortRunTests {
         file.delete();
       }
     }
-//    if (!file.canWrite()) {
-//      System.out.println("Can't write to file");
-//      System.exit(1);
-//    }
+    //    if (!file.canWrite()) {
+    //      System.out.println("Can't write to file");
+    //      System.exit(1);
+    //    }
     try {
       file.createNewFile();
     } catch (IOException e) {
@@ -48,7 +48,6 @@ public class QuickSortRunTests {
   private static void openWebsite() {
     System.out.println("Opening website...");
 
-
     File whereToRun = new File("./QuickSortResultsSite/");
     if (!whereToRun.exists()) {
       System.out.println("The Website directory does not exit? ");
@@ -61,9 +60,9 @@ public class QuickSortRunTests {
     if (isWindows) {
       System.out.println("Detected Windows. Opening website...");
       builder.command("cmd.exe", "/c", "npm install;npm run dev & open localhost:5173");
-      try{
+      try {
         Desktop.getDesktop().browse(new URI("localhost:5173"));
-      }catch (Exception e) {
+      } catch (Exception e) {
         System.out.println("Something went wrong when opening the website: " + e.getMessage());
       }
 
@@ -78,31 +77,24 @@ public class QuickSortRunTests {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-
-
-
-
-
-
-
   }
 
   private static String generateData() {
     List<AlgoTests> allData = new LinkedList<>();
 
-//    allData.add(runTests("QuickSort Pivot First Element", QuickSortFE::sort));
+    allData.add(runTests("QuickSort Pivot First Element", QuickSort::quickSortFE));
     allData.add(runTests("QuickSort Pivot Random Element", QuickSort::quickSortRE));
     allData.add(runTests("QuickSort Pivot Median of 3", QuickSort::quickSortMedian));
 
-
     ObjectMapper mapper = new ObjectMapper();
-      try {
-          return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(allData);
-      } catch (JsonProcessingException e) {
-          System.out.println("Something went wrong when converting the data to JSON: " + e.getMessage());
-          System.exit(1);
-      }
-      return null; // Make compiler happy, will never actually run
+    try {
+      return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(allData);
+    } catch (JsonProcessingException e) {
+      System.out.println(
+          "Something went wrong when converting the data to JSON: " + e.getMessage());
+      System.exit(1);
+    }
+    return null; // Make compiler happy, will never actually run
   }
 
   private static AlgoTests runTests(String nameOfAlgo, SortingAlgo algo) {
@@ -113,11 +105,8 @@ public class QuickSortRunTests {
     AlgoTest data50PerOrd = new AlgoTest("50% Ordered Array");
     AlgoTest data75PerOrd = new AlgoTest("75% Ordered Array");
 
-
-
-
     for (int i = 1; i < 16; i++) {
-      ArrayCreator arr = new ArrayCreator((int)Math.abs(Math.pow(2, i)));
+      ArrayCreator arr = new ArrayCreator((int) Math.abs(Math.pow(2, i)));
       int[] arrToSort = arr.array();
 
       // Random
@@ -126,27 +115,33 @@ public class QuickSortRunTests {
       long endTime = System.nanoTime();
       long elapsedTimeMS = Math.absExact((endTime - startTime));
 
-      dataRand.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS));
+      dataRand.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
 
       // Reversed
       arrToSort = arr.reversedArray();
-      startTime = System.nanoTime();
-      algo.sort(arrToSort); // not storing result cause we literally don't care
-      endTime = System.nanoTime();
-      elapsedTimeMS = Math.absExact((endTime - startTime));
+      try {
+        startTime = System.nanoTime();
+        algo.sort(arrToSort); // not storing result cause we literally don't care
+        endTime = System.nanoTime();
+        elapsedTimeMS = Math.absExact((endTime - startTime));
 
-      dataRevOr.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS));
+        dataRevOr.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
+      } catch (StackOverflowError e) {
+        dataRevOr.addDataPoint(new DataPoint(arr.getSize(), 0, false));
+      }
 
       // Ordered
       arrToSort = arr.orderedArray();
-      startTime = System.nanoTime();
-      algo.sort(arrToSort); // not storing result cause we literally don't care
-      endTime = System.nanoTime();
-      elapsedTimeMS = Math.absExact((endTime - startTime));
+      try {
+        startTime = System.nanoTime();
+        algo.sort(arrToSort); // not storing result cause we literally don't care
+        endTime = System.nanoTime();
+        elapsedTimeMS = Math.absExact((endTime - startTime));
 
-      dataOrdered.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS));
-
-
+        dataOrdered.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
+      } catch (StackOverflowError e) {
+        dataOrdered.addDataPoint(new DataPoint(arr.getSize(), 0, false));
+      }
 
       // 50% ordered
       arrToSort = arr.fiftyPercentOrdered();
@@ -155,7 +150,7 @@ public class QuickSortRunTests {
       endTime = System.nanoTime();
       elapsedTimeMS = Math.absExact((endTime - startTime));
 
-      data50PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS));
+      data50PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
 
       // 75% ordered
       arrToSort = arr.seventyFivePercentOrdered();
@@ -164,9 +159,8 @@ public class QuickSortRunTests {
       endTime = System.nanoTime();
       elapsedTimeMS = Math.absExact((endTime - startTime));
 
-      data75PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS));
+      data75PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTimeMS, true));
     }
-
 
     results.addTest(dataRand);
     results.addTest(dataRevOr);
@@ -174,46 +168,49 @@ public class QuickSortRunTests {
     results.addTest(data50PerOrd);
     results.addTest(data75PerOrd);
 
-
-
     return results;
   }
 
   @FunctionalInterface
-  private interface SortingAlgo{
+  private interface SortingAlgo {
     int[] sort(int[] arr);
   }
 
-  private static class AlgoTests{
+  private static class AlgoTests {
     public final String AlgoName;
     public final List<AlgoTest> tests = new LinkedList<>();
 
     public AlgoTests(String AlgoName) {
       this.AlgoName = AlgoName;
     }
-    public void addTest(AlgoTest test){
+
+    public void addTest(AlgoTest test) {
       this.tests.add(test);
     }
   }
 
-  private static class AlgoTest{
+  private static class AlgoTest {
     public final String testName;
     public final List<DataPoint> dataPoints = new ArrayList<>();
+
     public AlgoTest(String testName) {
       this.testName = testName;
     }
-    public  void addDataPoint(DataPoint dataPoint){
+
+    public void addDataPoint(DataPoint dataPoint) {
       this.dataPoints.add(dataPoint);
     }
   }
 
-  private static class DataPoint{
+  private static class DataPoint {
     public final int arrSize;
     public final long deltaTime;
-    public DataPoint(int arrSize, long deltaTime) {
+    public boolean success;
+
+    public DataPoint(int arrSize, long deltaTime, boolean success) {
       this.arrSize = arrSize;
       this.deltaTime = deltaTime;
+      this.success = success;
     }
   }
-
 }
