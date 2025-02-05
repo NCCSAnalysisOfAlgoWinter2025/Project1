@@ -127,4 +127,8 @@ public class ArrayCreator {
 
     return newArray;
   }
+
+    public int getSize() {
+
+  return this.size;}
 }

@@ -1,20 +1,17 @@
 package SortingAlgorithms;
-// Selection Sort Implementation
 
+import Results.SortAlgorithm;
 
-public class SelectionSort{
-    private SelectionSort(){}
+public class SelectionSort implements SortAlgorithm {
     /**
      * Implements selection sort algorithm.
      * Time Complexity: O(n^2)
      * Space Complexity: O(1)
      *
      * @param arr Array to be sorted
-     * @return Time taken in microseconds
      */
-    public static long sort(int[] arr) {
-        long startTime = System.nanoTime();
-
+    @Override
+    public void sort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             int minIdx = i;
@@ -28,11 +25,5 @@ public class SelectionSort{
             arr[minIdx] = arr[i];
             arr[i] = temp;
         }
-
-        return (System.nanoTime() - startTime) / 1000; // Convert to microseconds
-    }
-
-    public static String getName() {
-        return "Selection Sort";
     }
 }

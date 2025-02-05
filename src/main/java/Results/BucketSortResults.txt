@@ -1,0 +1,81 @@
+Bucket Sort Run Times
+
+RANDOM
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 1ms
+Array size 512: 0ms
+Array size 1024: 1ms
+Array size 2048: 1ms
+Array size 4096: 2ms
+Array size 8192: 4ms
+Array size 16384: 7ms
+Array size 32768: 14ms
+
+ORDERED
+Array size 4: 1ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 0ms
+Array size 512: 0ms
+Array size 1024: 1ms
+Array size 2048: 1ms
+Array size 4096: 2ms
+Array size 8192: 3ms
+Array size 16384: 5ms
+Array size 32768: 10ms
+
+REVERSED
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 1ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 0ms
+Array size 512: 1ms
+Array size 1024: 0ms
+Array size 2048: 1ms
+Array size 4096: 2ms
+Array size 8192: 3ms
+Array size 16384: 7ms
+Array size 32768: 8ms
+
+50% ORDERED
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 0ms
+Array size 512: 0ms
+Array size 1024: 0ms
+Array size 2048: 0ms
+Array size 4096: 0ms
+Array size 8192: 1ms
+Array size 16384: 3ms
+Array size 32768: 6ms
+
+75% ORDERED
+Array size 4: 0ms
+Array size 8: 0ms
+Array size 16: 0ms
+Array size 32: 0ms
+Array size 64: 0ms
+Array size 128: 0ms
+Array size 256: 0ms
+Array size 512: 0ms
+Array size 1024: 1ms
+Array size 2048: 0ms
+Array size 4096: 1ms
+Array size 8192: 1ms
+Array size 16384: 2ms
+Array size 32768: 5ms

@@ -10,3 +10,4 @@ import ArrayCreator.ArrayCreator;
 public interface ArrayMethod {
   int[] execute(ArrayCreator arrayCreator);
 }
+

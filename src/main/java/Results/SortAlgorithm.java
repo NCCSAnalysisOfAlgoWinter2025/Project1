@@ -1,5 +1,6 @@
 package Results;
 
+
 /**
  * Function interface for passing specific sorting algorithm into the constructor
  * of the ChartCreator class

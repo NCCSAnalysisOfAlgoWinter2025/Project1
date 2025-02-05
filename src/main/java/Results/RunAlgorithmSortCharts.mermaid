@@ -1,0 +1,90 @@
+classDiagram
+    class SortAlgorithm {
+        <<interface>>
+        +sort(int[] arr)
+        +timer(ArrayCreator inputArray) long
+    }
+    
+    class ArrayCreator {
+        -size: int
+        -array: int[]
+        +array() int[]
+        +OrderedArray() int[]
+        +reversedArray() int[]
+        +fiftyPercentOrdered() int[]
+        +seventyFivePercentOrdered() int[]
+        +getSize() int
+    }
+    
+    class ChartCreator{
+        -SortAlgorithm currentSort
+        -ArrayMethod arrayMethod
+        -String xy
+        -String chart
+        -String png
+        +timer(ArrayCreator):long
+        +createChart():void
+    }
+    
+    class RunAlgorithmSortCharts {
+        +main(String[] arg): void
+    }
+
+    class BubbleSort{
+        +sort() void
+    }
+
+    class BucketSort{
+        +sort() void
+    }
+
+    class CountingSort{
+        +sort() void
+    }
+
+    class HeapSort{
+        +sort() void
+    }
+    class InsertionSort{
+        +sort() void
+    }
+
+    class MergeSort{
+        +sort() void
+    }
+
+    class RadixSort{
+        +sort() void
+    }
+
+    class SelectionSort{
+        +sort() void
+    }
+
+    class ShellSort{
+        +sort() void
+    }
+
+    class QuickSort{
+        -temp:int
+        -medianOfThreePicker: QuickSortPivotPicker
+        +quickSortFE(int[]): int[]
+        +quickSortRE(int[]): int[]
+        +quickSortMedian(int[]): int[]
+        -genericQuickSort(int[], int, int, QuickSortPivotPicker): int[]
+
+
+    }
+
+    RunAlgorithmSortCharts ..|> ChartCreator
+    ChartCreator ..|> ArrayCreator
+    BubbleSort ..|> SortAlgorithm
+    BucketSort ..|> SortAlgorithm
+    CountingSort ..|> SortAlgorithm
+    HeapSort ..|> SortAlgorithm
+    InsertionSort ..|> SortAlgorithm
+    MergeSort ..|> SortAlgorithm
+    QuickSort ..|> SortAlgorithm
+    RadixSort ..|> SortAlgorithm
+    SelectionSort ..|> SortAlgorithm
+    ShellSort ..|> SortAlgorithm
