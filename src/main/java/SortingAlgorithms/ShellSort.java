@@ -1,7 +1,6 @@
 package SortingAlgorithms;
 
 import Results.SortAlgorithm;
-import ArrayCreator.ArrayCreator;
 
 public class ShellSort implements SortAlgorithm {
     /**
@@ -28,20 +27,5 @@ public class ShellSort implements SortAlgorithm {
                 arr[j] = temp;
             }
         }
-    }
-
-    /**
-     * Times the sorting of an array
-     * @param inputArray array to be sorted
-     * @return time in milliseconds(ms) it took for the array to be sorted
-     */
-    @Override
-    public long timer(ArrayCreator inputArray) {
-        // Use the timer implementation from your ChartCreator class
-        long startTime = System.currentTimeMillis();
-        int[] arr = new int[inputArray.getSize()]; // Assuming getSize() exists in ArrayCreator
-        sort(arr);
-        long endTime = System.currentTimeMillis();
-        return endTime - startTime;
     }
 }
