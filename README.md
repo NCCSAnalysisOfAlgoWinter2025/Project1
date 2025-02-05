@@ -1,4 +1,4 @@
-Our final analysis is the root directory towards the bottom between countinSortCharReversed.png and heapSortChart50ordered.png
+Our final analysis is the root directory towards the bottom between right below CONTRIBUTING.md on github but will be pushed down further if you're looking at it in inteliJ. 
 
 This is a sorting algorithm experiment where we take various sorting algorithms
 and run various iterations of various size arrays as input and create charts
