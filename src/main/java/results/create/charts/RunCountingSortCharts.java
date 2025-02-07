@@ -1,6 +1,6 @@
-package tempresults.create.charts;
+package results.create.charts;
 
-import tempresults.ChartCreator;
+import results.ChartCreator;
 import sorting.algorithms.CountingSort;
 
 /**

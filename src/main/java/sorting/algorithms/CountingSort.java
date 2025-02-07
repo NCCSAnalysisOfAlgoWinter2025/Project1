@@ -1,7 +1,7 @@
 package sorting.algorithms;
 
 import java.util.Arrays;
-import tempresults.SortAlgorithm;
+import results.SortAlgorithm;
 
 /**
  * Implements the counting sort algorithm.

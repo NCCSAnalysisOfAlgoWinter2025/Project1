@@ -1,6 +1,6 @@
 package sorting.algorithms;
 
-import tempresults.SortAlgorithm;
+import results.SortAlgorithm;
 
 /**
  * This class is in charge of storing the Bubble Sort algorithm.

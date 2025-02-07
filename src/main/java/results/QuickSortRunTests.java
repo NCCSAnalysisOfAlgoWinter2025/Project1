@@ -1,4 +1,4 @@
-package tempresults;
+package results;
 
 import array.creator.ArrayCreator;
 import sorting.algorithms.QuickSort;
