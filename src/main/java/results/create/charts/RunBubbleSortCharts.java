@@ -34,7 +34,6 @@ public class RunBubbleSortCharts {
             "Bubble Sort Performance (Ordered)",
             "Bubble Sort Chart (Ordered)",
             "bubbleSortChartOrdered.png");
-    ordered.createChart();
 
     ChartCreator reversed =
         new ChartCreator(
@@ -50,7 +49,7 @@ public class RunBubbleSortCharts {
                     arrayCreator -> arrayCreator.fiftyPercentOrdered(), // 50% ordered array
                     "Bubble Sort Performance (50% Ordered)",
                     "Bubble Sort Chart (50% Ordered)",
-                    "bubbleSortChart50ordered.png");
+                   "bubbleSortChart50ordered.png");
 
     ChartCreator seventyFivePercentOrdered =
         new ChartCreator(
