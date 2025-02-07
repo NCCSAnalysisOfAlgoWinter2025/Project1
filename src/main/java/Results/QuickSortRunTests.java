@@ -1,7 +1,7 @@
-package Results;
+package results;
 
-import ArrayCreator.ArrayCreator;
-import SortingAlgorithms.QuickSort;
+import array.creator.ArrayCreator;
+import sorting.algorithms.QuickSort;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.*;
