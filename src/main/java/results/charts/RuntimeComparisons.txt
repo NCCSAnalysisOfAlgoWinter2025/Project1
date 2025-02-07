@@ -1,0 +1,68 @@
+All runtimes are for arrays of size 32,768 (all runtimes are in ms)
+
+RANDOM
+counting: 1
+heap: 1
+radix: 2
+merge: 3
+shell: 7
+bucket: 14
+selection: 230
+bubble: 369
+insertion: 478
+
+ORDERED
+bubble: 2
+counting: 3
+merge: 3
+radix: 3
+heap: 4
+shell: 4
+bucket: 10
+insertion: 137
+selection: 214
+
+REVERSED
+counting: 3
+radix: 3
+heap: 4
+merge: 4
+shell: 7
+bucket: 8
+selection: 737
+insertion: 800
+bubble: 835
+
+50% ORDERED
+counting: 1
+radix: 1
+merge: 2
+heap: 3
+bucket: 6
+shell: 6
+selection: 199
+bubble: 281
+insertion: 384
+
+75% ORDERED
+radix: 2
+counting: 3
+heap: 3
+merge: 3
+bucket: 5
+shell: 7
+selection: 200
+bubble: 212
+insertion: 287
+
+
+Total combined run times across all types of arrays of size 32,768
+counting: 11
+radix: 11
+merge: 15
+heap: 15
+shell: 31
+bucket: 43
+selection: 1580
+bubble: 1699
+insertion: 2086
