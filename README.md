@@ -13,13 +13,34 @@ link (https://mavenlibs.com/jar/file/org.jfree/jfreechart).
 
 ## Running
 
-To run most tests go to src/main/java/Results/ there you will find the java files each containing a main function which you can run.
+To run most tests go to src/main/java/results/create.charts there you will find the java files each containing a main function which you can run.
 
-For QuickSortRunTests it has a dedicated local website, when you run the main it will open your browser and the folder containg the site as well as generate the data. Open the terminal in the website directory and run:
+For QuickSortRunTests it has a dedicated local website, got to src/main/java/results and open QuickSortRunTests, when you run the main it will open your browser and the folder containing the site as well as generate the data. Open the terminal in the website directory and run:
 
-```bash
+If you already have NodeJS installed on your computer, run the code below in your terminal and skip to line #46. If you do not have NodeJS installed on your computer then jump to line #24
 npm run install
 npm run dev
-```
 
-Return to your browser and refresh the page, you will be prompted to browse to the outputed json which can be found in the root of the project folder
+For mac if you have homebrew installed:
+brew install node
+
+For mac if you do not have homebrew installed:
+got to https://nodejs.org/en and click on download
+
+Ubuntu or other Debian based OS:
+sudo apt update
+sudo apt install nodejs npm
+
+CentOS (or other Red Hat-based systems):
+sudo yum install epel-release
+sudo yum install nodejs npm
+
+Windows:
+winget install OpenJS.NodeJS
+
+After installation run this code to verify your installation:
+node -v
+npm -v
+
+
+Return to your browser and refresh the page, you will be prompted to browse to the rendered json which can be found in the root of the project folder
