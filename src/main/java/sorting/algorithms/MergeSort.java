@@ -1,6 +1,6 @@
 package sorting.algorithms;
 
-import results.SortAlgorithm;
+import tempresults.SortAlgorithm;
 /**
  * The code below is from "Coding with John" YouTube channel. I made a couple changes such
  * as the variable names in merge from i,j,k to leftPos,rightPos and arrPos so they are

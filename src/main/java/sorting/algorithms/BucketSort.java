@@ -2,7 +2,7 @@ package sorting.algorithms;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import results.SortAlgorithm;
+import tempresults.SortAlgorithm;
 
 /**
  * Implements the bucket sort algorithm.

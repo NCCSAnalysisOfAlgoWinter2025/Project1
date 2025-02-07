@@ -1,4 +1,4 @@
-package results;
+package tempresults;
 
 import array.creator.ArrayCreator;
 import java.io.File;

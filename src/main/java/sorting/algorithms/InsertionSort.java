@@ -1,6 +1,6 @@
 package sorting.algorithms;
 
-import results.SortAlgorithm;
+import tempresults.SortAlgorithm;
 
 /**
  * I implemented this algorithm from memory.

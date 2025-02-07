@@ -1,6 +1,6 @@
 package sorting.algorithms;
 
-import results.SortAlgorithm;
+import tempresults.SortAlgorithm;
 
 /**
  * Implements the shell sort algorithm.

@@ -1,14 +1,14 @@
-package results.create.charts;
+package tempresults.create.charts;
 
-import results.ChartCreator;
-import sorting.algorithms.MergeSort;
+import tempresults.ChartCreator;
+import sorting.algorithms.InsertionSort;
 
 /**
  * Creates a graph chart for various array sizes and permutations
  * of those arrays.
  */
 @SuppressWarnings("Convert2MethodRef") // shut up about lambdas
-public class RunMergeSortCharts {
+public class RunInsertionSortCharts {
   /**
    * main method to create arrays and charts.
    *
@@ -17,51 +17,48 @@ public class RunMergeSortCharts {
   @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
   // shut up about variable distance
   public static void main(String[] args) {
-    // Create an instance of MergeSort
-    MergeSort mergeSort = new MergeSort();
+    InsertionSort insertionSort = new InsertionSort();
 
-    // Create instances of ChartCreator using method references
     ChartCreator random = new ChartCreator(
-            mergeSort,
+            insertionSort,
             arrayCreator -> arrayCreator.array(), // Random array
-            "Merge Sort Performance (Random)",
-            "Merge Sort Chart (Random)",
-            "mergeSortChartRandom.png"
+            "Insertion Sort Performance (Random)",
+            "Insertion Sort Chart (Random)",
+            "insertionSortChartRandom.png"
     );
 
     ChartCreator ordered = new ChartCreator(
-            mergeSort,
+            insertionSort,
             arrayCreator -> arrayCreator.orderedArray(), // Ordered array
-            "Merge Sort Performance (Ordered)",
-            "Merge Sort Chart (Ordered)",
-            "mergeSortChartOrdered.png"
+            "Insertion Sort Performance (Ordered)",
+            "Insertion Sort Chart (Ordered)",
+            "insertionSortChartOrdered.png"
     );
 
     ChartCreator reversed = new ChartCreator(
-            mergeSort,
+            insertionSort,
             arrayCreator -> arrayCreator.reversedArray(), // Ordered array
-            "Merge Sort Performance (Reversed)",
-            "Merge Sort Chart (Reversed)",
-            "mergeSortChartReversed.png"
+            "Insertion Sort Performance (Reversed)",
+            "Insertion Sort Chart (Reversed)",
+            "insertionSortChartReversed.png"
     );
 
     ChartCreator fiftyPercentOrdered = new ChartCreator(
-            mergeSort,
+            insertionSort,
             arrayCreator -> arrayCreator.fiftyPercentOrdered(), // 50% ordered array
-            "Merge Sort Performance (50% Ordered)",
-            "Merge Sort Chart (50% Ordered)",
-            "mergeSortChart50ordered.png"
+            "Insertion Sort Performance (50% Ordered)",
+            "Insertion Sort Chart (50% Ordered)",
+            "insertionSortChart50ordered.png"
     );
 
     ChartCreator seventyFivePercentOrdered = new ChartCreator(
-            mergeSort,
+            insertionSort,
             arrayCreator -> arrayCreator.seventyFivePercentOrdered(), // 50% ordered array
-            "Merge Sort Performance (75% Ordered)",
-            "Merge Sort Chart (75% Ordered)",
-            "mergeSortChart75ordered.png"
+            "Insertion Sort Performance (75% Ordered)",
+            "Insertion Sort Chart (75% Ordered)",
+            "insertionSortChart75ordered.png"
     );
 
-    // Create the charts
     random.createChart();
     ordered.createChart();
     reversed.createChart();
@@ -69,4 +66,5 @@ public class RunMergeSortCharts {
     seventyFivePercentOrdered.createChart();
   }
 }
+
 

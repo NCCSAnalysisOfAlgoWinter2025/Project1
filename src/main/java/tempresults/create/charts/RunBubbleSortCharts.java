@@ -1,6 +1,6 @@
-package results.create.charts;
+package tempresults.create.charts;
 
-import results.ChartCreator;
+import tempresults.ChartCreator;
 import sorting.algorithms.BubbleSort;
 
 /**
