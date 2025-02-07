@@ -2,7 +2,7 @@ Our final analysis is the root directory towards the bottom between right below 
 
 This is a sorting algorithm experiment where we take various sorting algorithms
 and run various iterations of various size arrays as input and create charts
-that demonstrate the runtime in relation to array size.
+that demonstrate the runtime in relation to array size
 
 To use this repository you will need the intelliJ IDE and also five dependencies
 are required. First is Junit, second is JFree, the third is Jackson-core(2.18), fourth is Jackson-databind(2.18), and fith is npm package manager. To use JFree you will need
