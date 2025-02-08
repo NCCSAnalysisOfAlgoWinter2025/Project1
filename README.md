@@ -6,7 +6,8 @@ are required. First is Junit, second is JFree, the third is Jackson-core(2.18), 
 manager. To use JFree you will need to add the .jar file as a dependency. The JFree .jar file can be found in this
 link (https://mavenlibs.com/jar/file/org.jfree/jfreechart).
 
-<img src="screen.shots/UML.png" alt="UML" width="1000">
+![UML](screen.shots/UML.png)
+
 
 ## Running
 
