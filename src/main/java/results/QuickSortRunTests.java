@@ -102,8 +102,8 @@ public class QuickSortRunTests {
   private static String generateData() {
     List<AlgoTests> allData = new LinkedList<>();
 
-    allData.add(runTests("QuickSort Pivot First Element", QuickSort::quickSortFE));
-    allData.add(runTests("QuickSort Pivot Random Element", QuickSort::quickSortRE));
+    allData.add(runTests("QuickSort Pivot First Element", QuickSort::quickSortFirstEl));
+    allData.add(runTests("QuickSort Pivot Random Element", QuickSort::quickSortRandEl));
     allData.add(runTests("QuickSort Pivot Median of 3", QuickSort::quickSortMedian));
 
     ObjectMapper mapper = new ObjectMapper();

@@ -8,12 +8,19 @@ import java.util.Random;
  * All methods will throw an exception if they are given a null array.
  */
 public class QuickSort {
+
+  //It can't decide if it wants the unused variable to be _ or a
+  @SuppressWarnings("checkstyle:LambdaParameterName")
   private static final QuickSortPivotPicker firstElementPicker = (_, s, _) -> s;
   /* Instance of random is made here for two reasons: I only need to manage one instance,
   creating a new random every time I want to get a new random number is dumb */
   private static final Random r = new Random();
+
+  //It can't decide if it wants the unused variable to be _ or a
+  @SuppressWarnings("checkstyle:LambdaParameterName")
   private static final QuickSortPivotPicker randomElementPicker = (_, s, e) -> r.nextInt(s, e);
-  // How many elements to pick out from start, middle, and end (Do not change, will require update to median picker)
+  /* How many elements to pick out from start, middle, and end
+  (Do not change, will require update to median picker)*/
   private static final int numOfElemsToGrabForMedian = 1;
   /* Parallel arrays, the littleArrIndex will be sorted according to littleArrVals,
      so we can later return an index not a value */
@@ -41,7 +48,8 @@ public class QuickSort {
         }
 
         // Mega cool (unoptimized) bubble sort
-        // Because it will ever sort 3 elements per depth and is just a step in the QuickSort this is actually O(1)
+        /* Because it will ever sort 3 elements per depth and is just a step in the QuickSort.
+         this comes out to actually be O(1)*/
         boolean hasNotSort = false;
         while (!hasNotSort) {
           hasNotSort = true;
@@ -72,7 +80,7 @@ public class QuickSort {
    * @param array The array you want to sort
    * @return Returns a sorted copy of the array
    */
-  public static int[] quickSortFE(int[] array) {
+  public static int[] quickSortFirstEl(int[] array) {
     // make a copy of the array before passing it to the quicksort
     int[] arrayCopy = Arrays.copyOf(array, array.length);
     return genericQuickSort(arrayCopy, 0, array.length - 1, firstElementPicker);
@@ -84,7 +92,7 @@ public class QuickSort {
    * @param array The array you want to sort
    * @return Returns a sorted copy of the array
    */
-  public static int[] quickSortRE(int[] array) {
+  public static int[] quickSortRandEl(int[] array) {
     int[] arrayCopy = Arrays.copyOf(array, array.length);
     return genericQuickSort(arrayCopy, 0, array.length - 1, randomElementPicker);
   }
