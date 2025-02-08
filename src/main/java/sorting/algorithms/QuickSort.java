@@ -8,33 +8,21 @@ import java.util.Random;
  * All methods will throw an exception if they are given a null array.
  */
 public class QuickSort {
-  private static final QuickSortPivotPicker firstElementPicker = (a, s, e) -> s;
+  private static final QuickSortPivotPicker firstElementPicker = (_, s, _) -> s;
   /* Instance of random is made here for two reasons: I only need to manage one instance,
   creating a new random every time I want to get a new random number is dumb */
   private static final Random r = new Random();
   private static final QuickSortPivotPicker randomElementPicker = (_, s, e) -> r.nextInt(s, e);
+  // How many elements to pick out from start, middle, and end (Do not change, will require update to median picker)
+  private static final int numOfElemsToGrabForMedian = 1;
+  /* Parallel arrays, the littleArrIndex will be sorted according to littleArrVals,
+     so we can later return an index not a value */
+  private static final int[] littleArrVals = new int[3 * numOfElemsToGrabForMedian];
+  private static final int[] littleArrIndex = new int[3 * numOfElemsToGrabForMedian];
   // small memory optimization
   private static int temp;
-
-  private static int numOfElemsToGrabForMedian = 1;
-  private static int[] littleArrVals = new int[3 * numOfElemsToGrabForMedian];
-  private static int[] littleArrIndex = new int[3 * numOfElemsToGrabForMedian];
-
   private static final QuickSortPivotPicker medianOfThreePicker =
       (a, s, e) -> {
-
-        // How many elements to pick out from start, middle, and end
-
-
-//        // Go to 1 if we literally can't grab enough elements
-//        if ((e + 1 - s) / (3.0 * numOfElemsToGrabForMedian) < 1.0) {
-//          numOfElemsToGrabForMedian = 1;
-//        }
-
-        /* Parallel arrays, the littleArrIndex will be sorted according to littleArrVals,
-        so we can later return an index not a value */
-
-
         // populate
         for (int i = 0; i < numOfElemsToGrabForMedian; i++) {
           // from start going to the right
@@ -53,15 +41,18 @@ public class QuickSort {
         }
 
         // Mega cool (unoptimized) bubble sort
+        // Because it will ever sort 3 elements per depth and is just a step in the QuickSort this is actually O(1)
         boolean hasNotSort = false;
         while (!hasNotSort) {
           hasNotSort = true;
           for (int i = 0; i < littleArrVals.length - 1; i++) {
             if (littleArrVals[i] > littleArrVals[i + 1]) {
+              // Sort the values
               temp = littleArrVals[i];
               littleArrVals[i] = littleArrVals[i + 1];
               littleArrVals[i + 1] = temp;
 
+              // Sort the corresponding index accordingly
               temp = littleArrIndex[i];
               littleArrIndex[i] = littleArrIndex[i + 1];
               littleArrIndex[i + 1] = temp;
