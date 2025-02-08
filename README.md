@@ -2,9 +2,17 @@ This is a sorting algorithm experiment where we take various sorting algorithms 
 and create charts that demonstrate the runtime in relation to array size. 
 
 To use this repository you will need the intelliJ IDE and also five dependencies
-are required. First is Junit, second is JFree, the third is Jackson-core(2.18), fourth is Jackson-databind(2.18), and fith is npm package 
-manager. To use JFree you will need to add the .jar file as a dependency. The JFree .jar file can be found in this
-link (https://mavenlibs.com/jar/file/org.jfree/jfreechart).
+are required. First is Junit, second is JFree, the third is Jackson-core(2.18), fourth is Jackson-databind(2.18), and fifth is npm package 
+manager. To use JFree you will need to add the .jar file as a dependency. 
+
+You will need to download all of the .jar files below and add them as dependencies to your intelliJ project.
+
+https://mavenlibs.com/jar/file/org.jfree/jfreechart
+
+https://mavenlibs.com/jar/file/com.fasterxml.jackson.core/jackson-core
+
+https://mavenlibs.com/jar/file/com.fasterxml.jackson.core/jackson-databind
+
 
 ![UML](screen.shots/UML.png)
 

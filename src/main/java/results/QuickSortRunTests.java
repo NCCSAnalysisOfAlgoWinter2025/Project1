@@ -3,8 +3,12 @@ package results;
 import array.creator.ArrayCreator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.awt.*;
-import java.io.*;
+import java.awt.Desktop;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,13 +17,26 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import sorting.algorithms.QuickSort;
 
+/**
+ * Class for running tests on quick sort algorithms.
+ */
 public class QuickSortRunTests {
+  /**
+   * main method for running file.
+   *
+   * @param args command line arguments
+   */
   public static void main(String[] args) {
     String generateData = generateData();
     saveData(generateData);
     openWebsite();
   }
 
+  /**
+   * Saves the generated data to a JSON file.
+   *
+   * @param generateData the data to be saved
+   */
   private static void saveData(String generateData) {
     File file = new File("./QuickSortResults.json");
 
@@ -33,6 +50,9 @@ public class QuickSortRunTests {
     }
   }
 
+  /**
+   * Opens a website to display the QuickSort results.
+   */
   private static void openWebsite() {
     System.out.println("Opening website...");
 
@@ -74,6 +94,11 @@ public class QuickSortRunTests {
     }
   }
 
+  /**
+   * Generates test data for the QuickSort algorithms and converts it to JSON format.
+   *
+   * @return a JSON string representation of the test data
+   */
   private static String generateData() {
     List<AlgoTests> allData = new LinkedList<>();
 
@@ -92,6 +117,13 @@ public class QuickSortRunTests {
     return null; // Make compiler happy, will never actually run
   }
 
+  /**
+   * Runs tests on the specified sorting algorithm and collects the results.
+   *
+   * @param nameOfAlgo the name of the algorithm being tested
+   * @param algo the sorting algorithm to be tested
+   * @return an instance of AlgoTests containing the results of the tests
+   */
   private static AlgoTests runTests(String nameOfAlgo, SortingAlgo algo) {
     AlgoTests results = new AlgoTests(nameOfAlgo);
     AlgoTest dataRand = new AlgoTest("Random Array");
@@ -107,16 +139,12 @@ public class QuickSortRunTests {
       ArrayCreator arr = new ArrayCreator((int) Math.abs(Math.pow(2, i)));
       int[] arrToSort;
 
-      long startTime;
-      long endTime;
-      long elapsedTime;
-
       // Random
       arrToSort = Arrays.copyOfRange(arr.array(), 0, arr.array().length);
-      startTime = System.nanoTime();
+      long startTime = System.nanoTime();
       algo.sort(arrToSort); // not storing result because we literally don't care
-      endTime = System.nanoTime();
-      elapsedTime = Math.absExact((endTime - startTime));
+      long endTime = System.nanoTime();
+      long elapsedTime = Math.absExact((endTime - startTime));
 
       data50PerOrd.addDataPoint(new DataPoint(arr.getSize(), elapsedTime, true));
 
@@ -158,6 +186,15 @@ public class QuickSortRunTests {
     return results;
   }
 
+  /**
+   * Runs a test on the specified sorting algorithm and records the elapsed time.
+   * If a StackOverflowError occurs, it records the failure.
+   *
+   * @param algo the sorting algorithm to be tested
+   * @param algoTest the AlgoTest instance to record results
+   * @param arr the ArrayCreator instance used for generating arrays
+   * @param arrToSort the array to be sorted
+   */
   private static void runTestMayFail(
       SortingAlgo algo, AlgoTest algoTest, ArrayCreator arr, int[] arrToSort) {
     long startTime;
@@ -175,11 +212,19 @@ public class QuickSortRunTests {
     }
   }
 
+  /**
+   * Functional interface for sorting algorithms.
+   * Provides a method to sort an array of integers.
+   */
   @FunctionalInterface
   private interface SortingAlgo {
     void sort(int[] arr);
   }
 
+  /**
+   * Represents a collection of tests for a specific sorting algorithm.
+   * Contains the algorithm's name and a list of tests performed.
+   */
   private static class AlgoTests {
     public final String algoName;
     public final List<AlgoTest> tests = new LinkedList<>();
@@ -193,6 +238,10 @@ public class QuickSortRunTests {
     }
   }
 
+  /**
+   * Represents a single test case for a sorting algorithm.
+   * Contains the test name and a list of data points recorded during the test.
+   */
   private static class AlgoTest {
     public final String testName;
     public final List<DataPoint> dataPoints = new ArrayList<>();
@@ -206,11 +255,22 @@ public class QuickSortRunTests {
     }
   }
 
+  /**
+   * Represents a data point recorded during a sorting test.
+   * Contains the size of the array, the elapsed time, and the success status.
+   */
   private static class DataPoint {
     public final int arrSize;
     public final long deltaTime;
     public boolean success;
 
+    /**
+     * Constructs a DataPoint instance with the specified parameters.
+     *
+     * @param arrSize the size of the array
+     * @param deltaTime the time taken to sort the array
+     * @param success the success status of the sorting operation
+     */
     public DataPoint(int arrSize, long deltaTime, boolean success) {
       this.arrSize = arrSize;
       this.deltaTime = deltaTime;
