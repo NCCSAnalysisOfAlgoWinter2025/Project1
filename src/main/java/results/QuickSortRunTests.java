@@ -56,7 +56,7 @@ public class QuickSortRunTests {
   private static void openWebsite() {
     System.out.println("Opening website...");
 
-    File whereToRun = new File("./QuickSortResultsSite/");
+    File whereToRun = new File("./quickSortResultsSite/");
     if (!whereToRun.exists()) {
       System.out.println("The Website directory does not exit? ");
       System.exit(1);
