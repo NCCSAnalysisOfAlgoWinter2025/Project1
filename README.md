@@ -5,13 +5,9 @@ To use this repository you will need the intelliJ IDE and also five dependencies
 are required. First is Junit, second is JFree, the third is Jackson-core(2.18), fourth is Jackson-databind(2.18), and fifth is npm package 
 manager. To use JFree you will need to add the .jar file as a dependency. 
 
-You will need to download all of the .jar files below and add them as dependencies to your intelliJ project.
+You will need to download the JFRee .jar file below and add it as dependency to your intelliJ project.
 
 https://mavenlibs.com/jar/file/org.jfree/jfreechart
-
-https://mavenlibs.com/jar/file/com.fasterxml.jackson.core/jackson-core
-
-https://mavenlibs.com/jar/file/com.fasterxml.jackson.core/jackson-databind
 
 
 ![UML](screen.shots/UML.png)
@@ -21,11 +17,11 @@ https://mavenlibs.com/jar/file/com.fasterxml.jackson.core/jackson-databind
 
 To run most tests go to src/main/java/results/create.charts there you will find the java files each containing a main function which you can run.
 
-For QuickSortRunTests it has a dedicated local website, got to src/main/java/results and open QuickSortRunTests, when you run the main it will open your browser and the folder containing the site as well as generate the data. Open the terminal in the website directory and run:
+For QuickSortRunTests it has a dedicated local website, got to src/main/java/results and open QuickSortRunTests, when you run the main it will open your browser and the folder containing the site as well as generate the data. Move into the /quickSortResultsSite/ directory in the root directory:
 
-If you already have NodeJS installed on your computer, run the code below in your terminal and skip to the very last line at the bottom of this file. 
+If you already have NodeJS installed on your computer, run the code below in your terminal and skip to the very last line at the bottom of this file.
 
-npm install
+npm install (you only need to run this line once)
 
 npm run dev
 

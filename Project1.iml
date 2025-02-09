@@ -29,7 +29,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" name="jfreechart-1.5.4" level="project" />
-    <orderEntry type="library" name="jackson-core-2.15.2" level="project" />
-    <orderEntry type="library" name="jackson-databind-2.15.2" level="project" />
+    <orderEntry type="library" name="fasterxml.jackson.core.databind" level="project" />
+    <orderEntry type="library" name="fasterxml.jackson.core" level="project" />
   </component>
 </module>
