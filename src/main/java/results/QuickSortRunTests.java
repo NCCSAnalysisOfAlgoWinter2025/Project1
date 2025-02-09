@@ -56,7 +56,7 @@ public class QuickSortRunTests {
   private static void openWebsite() {
     System.out.println("Opening website...");
 
-    File whereToRun = new File("./QuickSortResultsSite/");
+    File whereToRun = new File("./quickSortResultsSite/");
     if (!whereToRun.exists()) {
       System.out.println("The Website directory does not exit? ");
       System.exit(1);
@@ -102,8 +102,8 @@ public class QuickSortRunTests {
   private static String generateData() {
     List<AlgoTests> allData = new LinkedList<>();
 
-    allData.add(runTests("QuickSort Pivot First Element", QuickSort::quickSortFE));
-    allData.add(runTests("QuickSort Pivot Random Element", QuickSort::quickSortRE));
+    allData.add(runTests("QuickSort Pivot First Element", QuickSort::quickSortFirstEl));
+    allData.add(runTests("QuickSort Pivot Random Element", QuickSort::quickSortRandEl));
     allData.add(runTests("QuickSort Pivot Median of 3", QuickSort::quickSortMedian));
 
     ObjectMapper mapper = new ObjectMapper();
