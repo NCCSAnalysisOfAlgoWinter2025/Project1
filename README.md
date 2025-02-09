@@ -25,7 +25,7 @@ For QuickSortRunTests it has a dedicated local website, got to src/main/java/res
 
 If you already have NodeJS installed on your computer, run the code below in your terminal and skip to the very last line at the bottom of this file. 
 
-npm run install
+npm install
 
 npm run dev
 

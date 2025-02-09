@@ -13,7 +13,8 @@ public class QuickSort {
   creating a new random every time I want to get a new random number is dumb */
   private static final Random r = new Random();
   private static final QuickSortPivotPicker randomElementPicker = (_, s, e) -> r.nextInt(s, e);
-  // How many elements to pick out from start, middle, and end (Do not change, will require update to median picker)
+  // How many elements to pick out from start, middle, and end (Do not change, will require
+  // update to median picker)
   private static final int numOfElemsToGrabForMedian = 1;
   /* Parallel arrays, the littleArrIndex will be sorted according to littleArrVals,
      so we can later return an index not a value */
@@ -41,7 +42,8 @@ public class QuickSort {
         }
 
         // Mega cool (unoptimized) bubble sort
-        // Because it will ever sort 3 elements per depth and is just a step in the QuickSort this is actually O(1)
+        // Because it will ever sort 3 elements per depth and is just a step in the QuickSort
+        // this is actually O(1)
         boolean hasNotSort = false;
         while (!hasNotSort) {
           hasNotSort = true;
